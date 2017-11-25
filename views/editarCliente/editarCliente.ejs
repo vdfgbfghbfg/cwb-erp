@@ -21,6 +21,12 @@
 							<input type="text" name="cliente[sobrenome]" class="form-control" placeholder="Sobrenome" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[celular]" class="form-control" placeholder="Celular" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[telefone]" class="form-control" placeholder="Telefone fixo" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
 							<select name="cliente[grupoCliente]" class="form-control" placeholder="Selecione o grupo de cliente" required>
 								<option>Selecione o grupo de cliente</option>
 								<option value="Segmento 1">Segmento 1</option>
@@ -82,7 +88,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-12 text-center">
+					<div class="col-12 text-center my-2">
 						<a href="/cliente/<%= cliente._id %>" class="btn btn-success d-inline" style="padding-top: 7px;padding-bottom: 8px;">Voltar</a>
 						<input type="submit" name="enviar" class="btn btn-warning d-inline" value="Salvar" />		
 					</div>
@@ -98,6 +104,8 @@
 								<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= cliente.cpfcnpj %></span></div>
 								<div class="col-12"><span class="attr2 col-12">Nome: <%= cliente.nome %></span></div>
 								<div class="col-12"><span class="attr2 col-12">Sobrenome: <%= cliente.sobrenome %></span></div>
+								<div class="col-12"><span class="attr2 col-12">Celular: <%= cliente.celular %></span></div>
+								<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= cliente.telefone %></span></div>
 								<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
 							</div>
 							<div class="col-6">

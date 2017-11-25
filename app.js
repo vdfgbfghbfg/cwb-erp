@@ -63,6 +63,8 @@ app.post('/cliente/new', (req,res) => {
 		nome: req.body.nome,
 		cpfcnpj: req.body.cpfcnpj,
 		sobrenome: req.body.sobrenome,
+		celular: req.body.celular,
+		telefone: req.body.telefone,
 		grupoCliente: req.body.grupoCliente,
 		cep: req.body.cep,
 		rua: req.body.rua,
