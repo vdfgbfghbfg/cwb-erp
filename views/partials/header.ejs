@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>ERP online</title>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	<script src="https://use.fontawesome.com/82f7512523.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
@@ -13,10 +16,25 @@
 	<ul class="text-center mb-5 p-3 bg-light">
 		<li class="d-inline mx-3"><a class="logo" style="font-family: 'Poiret One', cursive; font-size: 2em">deo</a></li>
 		<li class="d-inline mx-3"><a href="/"><i class="fa fa-home"></i> Inicio</a></li>
-		<li class="d-inline mx-3"><a href="/cliente/new"><i class="fa fa-address-book-o"></i> Cadastrar cliente</a></li>
-		<li class="d-inline mx-3"><a href="/cliente/"><i class="fa fa-address-book"></i> Ver clientes</a></li>
-		<li class="d-inline mx-3"><a href="/pedido/new"><i class="fa fa-folder-o"></i> Cadastrar pedido</a></li>
-		<li class="d-inline mx-3"><a href="/pedido/"><i class="fa fa-folder-open-o"></i> Ver pedidos</a></li>
-		<li class="d-inline mx-3"><a href="/pedido/new"><i class="fa fa-archive"></i> Cadastrar produto</a></li>
-		<li class="d-inline mx-3"><a href="/pedido/"><i class="fa fa-search"></i> Ver estoque</a></li>
+		<div class="dropdown d-inline dropdown-clientes">
+			<li class="d-inline mx-3 dropdown-toggle" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-folder-open-o"></i> Clientes </li>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+				<li class="dropdown-item"><a href="/cliente/new"><i class="fa fa-address-book-o"></i> Cadastrar cliente </a></li>
+				<li class="dropdown-item"><a href="/cliente/"><i class="fa fa-address-book"></i> Ver clientes </a></li>	
+			</div>
+		</div>
+		<div class="dropdown d-inline  dropdown-pedidos">
+			<li class="d-inline mx-3 dropdown-toggle" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-folder-open-o"></i> Pedidos </li>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+				<li class="dropdown-item"><a href="/pedido/new"><i class="fa fa-folder-o"></i> Cadastrar pedido </a></li>
+				<li class="dropdown-item"><a href="/pedido/"><i class="fa fa-folder-open-o"></i> Ver pedidos </a></li>		
+			</div>
+		</div>
+		<div class="dropdown d-inline dropdown-produtos">
+			<li class="d-inline mx-3 dropdown-toggle" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-archive"></i> Produtos </li>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+				<li class="dropdown-item"><a href="/pedido/new"><i class="fa fa-archive"></i> Cadastrar produto </a></li>
+				<li class="dropdown-item"><a href="/pedido/"><i class="fa fa-search"></i> Ver estoque </a></li>	
+			</div>
+		</div>
 	</ul>

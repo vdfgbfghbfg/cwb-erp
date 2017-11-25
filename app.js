@@ -5,6 +5,7 @@ var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 var path = require("path");
 var ejs = require('ejs-html');
+var Cliente = require('./models/cliente.model')
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -23,8 +24,41 @@ app.get('/', (req,res) => {
 })
 app.get('/cliente/new', (req,res) => {
 	res.render('novoCliente/novoCliente');
-
-})
+});
+app.get('/cliente', (req,res) => {
+	var clientes = {};
+	Cliente.find((error, cliente)=>{
+		if(error){console.log(error)}
+		else {
+			clientes.clientes = cliente;
+			
+			res.render('verClientes/verClientes', clientes)
+		}
+	})
+});
+app.get('/cliente/:id', (req,res) => {
+	Cliente.findById(req.params.id, (error, cliente) => {
+		if(error){
+			console.log(`Whoopsie. Erro: ${error}`);
+		} else {
+			console.log(cliente)
+			res.render('verCliente/verCliente', {cliente: cliente});
+		}
+	})
+});
+//post routes
+app.post('/cliente/new', (req,res) => {
+	var novoCliente = {email: req.body.email, nome: req.body.nome};
+	Cliente.create(novoCliente, (error,cliente) => {
+		if(error){
+			console.log(`Whoopsie. Erro: ${error}`);
+			res.render('/novoCliente/novoCliente', error);
+		} else {
+			console.log(`Cliente '${cliente.nome}' criado com sucesso.`)
+			res.redirect('/cliente');
+		}
+	});
+});
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

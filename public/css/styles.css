@@ -12,3 +12,18 @@ a:hover {
 .logo{
 	filter: drop-shadow(0px 1px 1px rgba(0,0,0,0.7))
 }
+.clientes-view{
+    border: 1px solid rgba(52, 52, 52, 0.3);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    background-color: #f2f2f2;
+    filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.3));
+}
+span.attr {
+    background-color: #7f9ebc;
+    border-radius: 5px;
+    padding: 0px 10px 3px 10px;
+    margin: 5px 20px 5px 0;
+    display: inline-block;
+}
