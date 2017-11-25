@@ -17,7 +17,14 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride("_method"));
 
-app.get('/', (req,res) => {res.render('home/home')})
+app.get('/', (req,res) => {
+	res.render('home/home');
+	
+})
+app.get('/cliente/new', (req,res) => {
+	res.render('novoCliente/novoCliente');
+
+})
 
 app.listen(process.env.port || 3000, function(){
 	console.log('Server online')
