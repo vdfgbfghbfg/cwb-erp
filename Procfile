@@ -1,1 +1,0 @@
-init: node app.js
