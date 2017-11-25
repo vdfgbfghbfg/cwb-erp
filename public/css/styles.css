@@ -35,3 +35,15 @@ span.attr {
     width: 100%;
     z-index: 999;
 }
+li {
+    font-family: 'Poiret One', cursive;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+.poiret{
+    font-family: 'Poiret One', cursive !important;
+}
+.poiret-600{
+    font-weight: 600;
+    font-family: 'Poiret One', cursive !important;
+}

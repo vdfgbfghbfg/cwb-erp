@@ -69,7 +69,30 @@ app.post('/cliente/new', (req,res) => {
 		}
 	});
 });
+//update routes
+app.put('/cliente/:id/edit', (req,res) => {
+	Cliente.findByIdAndUpdate(req.params.id, req.body.cliente, (error,cliente) => {
+		if(error){
+			console.log(error);
+		} else{
+			console.log(cliente);
+			res.redirect('/cliente/'+req.params.id);
+		}
+	})
+});
 
+//delete routes
+app.delete('/cliente/:id', (req,res) => {
+	Cliente.findByIdAndRemove(req.params.id, (error,deleted) => {
+		if(error){
+			console.log(error)
+		}
+		else{
+			console.log(`${deleted.nome} foi deletado da base.`);
+			res.redirect('/cliente');
+		}
+	});
+})
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log('Express server listening on port', port)

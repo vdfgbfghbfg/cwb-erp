@@ -7,7 +7,10 @@
 			<div class="clientes-view row">
 				<div class="col-12 col-sm-4 d-inline"><span class="attr">Nome: </span><span><%= cliente.nome %></span></div>
 				<div class="col-12 col-sm-4 d-inline"><span class="attr">Email: </span><span><%= cliente.email %></span></div>
-				<a href="/cliente/<%= cliente._id %>/edit" class="btn btn-warning">Editar cliente</a>
+				<a href="/cliente/<%= cliente._id %>/edit" class="btn btn-warning mr-3">Editar cliente</a>
+				<form action="/cliente/<%= cliente._id %>?_method=DELETE" method="post">
+					<input class="btn btn-warning" type="submit" name="Deletar cliente" value="Deletar cliente">
+				</form>
 			</div>
 
 		</div>

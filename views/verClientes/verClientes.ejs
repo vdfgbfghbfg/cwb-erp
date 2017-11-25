@@ -6,9 +6,15 @@
 		<% clientes.forEach(cliente => { %>
 		<div class="col-12">
 			<div class="clientes-view row">
-				<div class="col-12 col-sm-4 d-inline"><span class="attr">Nome: </span><span><%= cliente.nome %></span></div>
-				<div class="col-12 col-sm-4 d-inline"><span class="attr">Email: </span><span><%= cliente.email %></span></div>
-				<div class="col-12 col-sm-4 d-inline text-center"><span class="attr" style="background: orange"><a href="/cliente/<%= cliente._id %>">Ver cliente</a></span></div>
+				<div class="col-12 col-sm-3 d-inline"><span class="attr">Nome: </span><span><%= cliente.nome %></span></div>
+				<div class="col-12 col-sm-3 d-inline"><span class="attr">Email: </span><span><%= cliente.email %></span></div>
+				<div class="col-12 col-sm-6 d-inline text-center">
+					<a class="btn btn-warning" href="/cliente/<%= cliente._id %>">Ver cliente</a>
+					<a href="/cliente/<%= cliente._id %>/edit" class="btn btn-warning">Editar cliente</a>
+					<form class="d-inline" action="/cliente/<%= cliente._id %>?_method=DELETE" method="post">
+						<input class="btn btn-warning" type="submit" name="Deletar cliente" value="Deletar cliente" style="cursor: pointer">
+					</form>
+				</div>
 			</div>
 		</div>
 		<% }); %>
