@@ -3,6 +3,8 @@ var expressSanitized = require("express-sanitized");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
+var path = require("path");
+var ejs = require('ejs-html');
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -15,8 +17,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride("_method"));
 
-app.get('/', (req,res) => {res.render('views/home/home')})
+app.get('/', (req,res) => {res.render('home/home')})
 
-app.listen(proc.ENV.port || 3000, function(){
+app.listen(process.env.port || 3000, function(){
 	console.log('Server online')
 })
