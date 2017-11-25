@@ -26,6 +26,7 @@ app.get('/cliente/new', (req,res) => {
 
 })
 
-app.listen(process.env.port || 3000, function(){
-	console.log('Server online')
-})
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log('Express server listening on port', port)
+});
