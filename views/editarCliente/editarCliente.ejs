@@ -1,21 +1,119 @@
 <% include ../partials/header %>
-<h2 class="text-center">Ver cliente individual</h2>
+<h2 class="text-center">Editando cliente <%= cliente.nome + ' ' + cliente.sobrenome %></h2>
 
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<h2 class="text-center my-3">Novos dados</h2>
-			<div class="clientes-view row">
-				<form action="/cliente/<%= cliente._id %>/edit?_method=PUT" method="POST" class="w-100">
-					<input type="text" name="cliente[nome]" class="form-control d-inline w-25 m-1" placeholder="Nome" value="<%= cliente.nome %>" />	
-					<input type="email" name="cliente[email]" class="form-control d-inline w-25 m-1" placeholder="Email" value="<%= cliente.email %>" />	
-					<input type="submit" name="enviar" class="btn btn-warning d-inline m-1" value="Salvar" />	
+			<hr>
+				<form action="/cliente/<%= cliente._id %>/edit?_method=PUT" method="POST" class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+						<h3 class="text-center mb-4 mt-2">Dados cadastrais</h3>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="email" name="cliente[email]" class="form-control" placeholder="Email" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[cpfcnpj]" class="form-control" placeholder="CPF/CNPJ" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[nome]" class="form-control" placeholder="Nome" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[sobrenome]" class="form-control" placeholder="Sobrenome" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<select name="cliente[grupoCliente]" class="form-control" placeholder="Selecione o grupo de cliente" required>
+								<option>Selecione o grupo de cliente</option>
+								<option value="Segmento 1">Segmento 1</option>
+								<option value="Segmento 2">Segmento 2</option>
+								<option value="Segmento 3">Segmento 3</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+						<h3 class="text-center mb-4 mt-2">Endereço</h3>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[cep]" class="form-control" placeholder="CEP" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[rua]" class="form-control" placeholder="Rua" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[numero]" class="form-control" placeholder="Número" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[complemento]" class="form-control" placeholder="Complemento">	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[bairro]" class="form-control" placeholder="Bairro">	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<input type="text" name="cliente[cidade]" class="form-control" placeholder="Cidade" required>	
+						</div>
+						<div class="my-2 w-75 ml-auto mr-auto">
+							<select name="cliente[estado]" class="form-control" placeholder="Estado" required>
+								<option value="Não selecionado">Selecione o estado</option>
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-12 text-center">
+						<a href="/cliente/<%= cliente._id %>" class="btn btn-success d-inline" style="padding-top: 7px;padding-bottom: 8px;">Voltar</a>
+						<input type="submit" name="enviar" class="btn btn-warning d-inline" value="Salvar" />		
+					</div>
 				</form>
 			</div>
-			<h2 class="text-center my-3">Dados atuais</h2>
-			<div class="clientes-view row">
-				<div class="col-12 col-sm-4 d-inline"><span class="attr">Nome: </span><span><%= cliente.nome %></span></div>
-				<div class="col-12 col-sm-4 d-inline"><span class="attr">Email: </span><span><%= cliente.email %></span></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="clientes-view row py-4">
+							<h3 class="text-center mb-4 col-12">Dados atuais</h3>
+							<div class="col-6">
+								<div class="col-12"><span class="attr2 col-12">Email: <%= cliente.email %></span></div>
+								<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= cliente.cpfcnpj %></span></div>
+								<div class="col-12"><span class="attr2 col-12">Nome: <%= cliente.nome %></span></div>
+								<div class="col-12"><span class="attr2 col-12">Sobrenome: <%= cliente.sobrenome %></span></div>
+								<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
+							</div>
+							<div class="col-6">
+								<div class="col-12"><span class="attr2 col-12">CEP: <%= cliente.cep %></span></div>
+								<div class="col-12"><span class="attr2 col-12">Rua: <%= cliente.rua %></span></div>
+								<div class="col-12"><span class="attr2 col-12">Número: <%= cliente.numero %></span></div>
+								<div class="col-12"><span class="attr2 col-12">Complemento: <%= cliente.complemento %></span></div>
+								<div class="col-12"><span class="attr2 col-12">Bairro: <%= cliente.bairro %></span></div>
+								<div class="row col-12">
+									<div class="col-6"><span class="attr2 w-100">Cidade: <%= cliente.cidade %></span></div>
+									<div class="col-6"><span class="attr2 w-100">Estado: <%= cliente.estado %></span></div>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

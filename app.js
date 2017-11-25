@@ -58,7 +58,20 @@ app.get('/cliente/:id/edit', (req,res) => {
 })
 //post routes
 app.post('/cliente/new', (req,res) => {
-	var novoCliente = {email: req.body.email, nome: req.body.nome};
+	var novoCliente = {
+		email: req.body.email,
+		nome: req.body.nome,
+		cpfcnpj: req.body.cpfcnpj,
+		sobrenome: req.body.sobrenome,
+		grupoCliente: req.body.grupoCliente,
+		cep: req.body.cep,
+		rua: req.body.rua,
+		numero: req.body.numero,
+		complemento: req.body.complemento,
+		bairro: req.body.bairro,
+		cidade: req.body.cidade,
+		estado: req.body.estado
+	};
 	Cliente.create(novoCliente, (error,cliente) => {
 		if(error){
 			console.log(`Whoopsie. Erro: ${error}`);

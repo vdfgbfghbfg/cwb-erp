@@ -23,8 +23,15 @@ a:hover {
     background-color: #f2f2f2;
     filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.3));
 }
-span.attr {
+.attr {
     background-color: #7f9ebc;
+    border-radius: 5px;
+    padding: 0px 10px 3px 10px;
+    margin: 5px 20px 5px 0;
+    display: inline-block;
+}
+.attr2 {
+    background-color: #7f9ebc47;
     border-radius: 5px;
     padding: 0px 10px 3px 10px;
     margin: 5px 20px 5px 0;
