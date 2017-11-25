@@ -30,3 +30,8 @@ span.attr {
     margin: 5px 20px 5px 0;
     display: inline-block;
 }
+.header-fixo{
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+}

@@ -1,0 +1,27 @@
+<% include ../partials/header %>
+<h2 class="text-center">Ver cliente individual</h2>
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<h2 class="text-center my-3">Novos dados</h2>
+			<div class="clientes-view row">
+				<form action="/cliente/<%= cliente._id %>?_method=PUT" method="GET" class="w-100">
+					<input type="text" name="nome" class="form-control d-inline w-25 m-1" placeholder="Nome" />	
+					<input type="email" name="email" class="form-control d-inline w-25 m-1" placeholder="Email" />	
+					<input type="submit" name="enviar" class="btn btn-warning d-inline m-1" placeholder="Enviar" />	
+				</form>
+			</div>
+			<h2 class="text-center my-3">Dados atuais</h2>
+			<div class="clientes-view row">
+				<div class="col-12 col-sm-4 d-inline"><span class="attr">Nome: </span><span><%= cliente.nome %></span></div>
+				<div class="col-12 col-sm-4 d-inline"><span class="attr">Email: </span><span><%= cliente.email %></span></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	
+
+
+<% include ../partials/footer %>

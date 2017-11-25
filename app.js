@@ -5,7 +5,8 @@ var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 var path = require("path");
 var ejs = require('ejs-html');
-var Cliente = require('./models/cliente.model')
+var Cliente = require('./models/cliente.model');
+var Produto = require('./models/produto.model');
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -46,6 +47,15 @@ app.get('/cliente/:id', (req,res) => {
 		}
 	})
 });
+//pagina editar cliente
+app.get('/cliente/:id/edit', (req,res) => {
+	Cliente.findById(req.params.id, (error, cliente) => {
+		if(error){console.log(error)}
+		else{
+			res.render('editarCliente/editarCliente', {cliente: cliente})
+		}
+	})
+})
 //post routes
 app.post('/cliente/new', (req,res) => {
 	var novoCliente = {email: req.body.email, nome: req.body.nome};

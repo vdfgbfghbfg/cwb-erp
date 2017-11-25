@@ -7,7 +7,9 @@
 			<div class="clientes-view row">
 				<div class="col-12 col-sm-4 d-inline"><span class="attr">Nome: </span><span><%= cliente.nome %></span></div>
 				<div class="col-12 col-sm-4 d-inline"><span class="attr">Email: </span><span><%= cliente.email %></span></div>
+				<a href="/cliente/<%= cliente._id %>/edit" class="btn btn-warning">Editar cliente</a>
 			</div>
+
 		</div>
 	</div>
 </div>
