@@ -1,0 +1,22 @@
+{
+  "name": "cwb-erp",
+  "version": "1.0.0",
+  "description": "ERP online",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgcg12/cwb-erp.git"
+  },
+  "keywords": [
+    "erp"
+  ],
+  "author": "Matheus Conrado Giacometti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgcg12/cwb-erp/issues"
+  },
+  "homepage": "https://github.com/mgcg12/cwb-erp#readme"
+}
