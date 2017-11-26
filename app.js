@@ -47,15 +47,27 @@ app.get('/cliente/:id', (req,res) => {
 		}
 	})
 });
+app.get('/produto/new', (req,res) => {
+	res.render('novoProduto/novoProduto');
+});
 //pagina editar cliente
 app.get('/cliente/:id/edit', (req,res) => {
 	Cliente.findById(req.params.id, (error, cliente) => {
-		if(error){console.log(error)}
+		if(error){res.render('error/error', {error:error})}
 		else{
 			res.render('editarCliente/editarCliente', {cliente: cliente})
 		}
 	})
-})
+});
+//pagina ver todos os produtos
+app.get('/produto', (req,res)=>{
+	Produto.find((error,produtos) => {
+		if(error){res.render('error/error', {error:error})}
+		else{
+			res.render('verProdutos/verProdutos', {produtos: produtos});
+		};
+	})
+});
 //post routes
 app.post('/cliente/new', (req,res) => {
 	var novoCliente = {
@@ -77,12 +89,24 @@ app.post('/cliente/new', (req,res) => {
 	Cliente.create(novoCliente, (error,cliente) => {
 		if(error){
 			console.log(`Whoopsie. Erro: ${error}`);
-			res.render('/novoCliente/novoCliente', error);
+			res.render('error/error', {error:error});
 		} else {
 			console.log(`Cliente '${cliente.nome}' criado com sucesso.`)
 			res.redirect('/cliente');
 		}
 	});
+});
+app.post('/produto/new', (req,res)=>{
+	Produto.create(req.body.produto, (error, produto) =>{
+		if(error){
+			console.log(error);
+			res.render('error/error', {error:error});
+		}
+		else {
+			console.log(`Produto ${produto.nomeProduto} inserido com sucesso`);
+			res.redirect('/produto');
+		}
+	})
 });
 //update routes
 app.put('/cliente/:id/edit', (req,res) => {

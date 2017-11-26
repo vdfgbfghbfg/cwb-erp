@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+<h2 class="text-center">Cadastrar novo produto</h2>
+<div class="container">
+	<hr>
+	<div class="row">
+		<div class="col mt-4 container">
+			<form class="" action="/produto/new" method="post">
+				<div class="row">
+					<div class="col-6">
+						<input class="form-control my-2" type="text" name="produto[nomeProduto]" placeholder="Nome do produto" required />
+					</div>
+					<div class="col-6">
+						<input class="form-control my-2" type="text" name="produto[sku]" placeholder="SKU" required />
+					</div>
+					<div class="col-6">
+						<input class="form-control my-2" type="number" name="produto[precoVenda]" placeholder="Preço de venda" required />
+					</div>
+					<div class="col-6">
+						<input class="form-control my-2" type="number" name="produto[precoCusto]" placeholder="Preço de custo" />
+					</div>
+					<div class="col-6">
+						<input class="form-control my-2" type="number" name="produto[quantidade]" placeholder="Quantidade disponível" required />
+					</div>
+					<div class="col-6">
+						<input class="form-control my-2" type="number" name="produto[peso]" placeholder="Peso estimado" />
+					</div>
+					<div class="col-6">
+						<input class="form-control my-2" type="text" name="produto[img]" placeholder="URL de imagem do produto" />
+					</div>
+					<div class="col-6">
+						<select name="produto[categoria]" class="form-control my-2">
+							<option>Selecione a categoria</option>
+							<option>Categoria 1</option>
+							<option>Categoria 2</option>
+							<option>Categoria 3</option>
+						</select>
+					</div>
+				</div>
+				<div class="text-center">
+					<input class="btn btn-warning my-3" type="submit" name="enviar" value="Enviar">	
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer %>

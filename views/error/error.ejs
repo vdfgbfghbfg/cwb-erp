@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+<h1 class="text-center">Opa, tivemos um erro.</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<p>Mensagem de erro:</p>		
+			<% if (error.code === 11000){ %>
+				<p>Já existe um usuário com este email.</p>
+			<% } else { %>
+				<p class="attr2" style="color: black !important">"<%= error.errmsg %>"</p>
+			<% } %>
+		</div>
+		<div class="col-12">
+			<p>Se não souber o que fazer, fale conosco e te ajudaremos.</p>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer %>
