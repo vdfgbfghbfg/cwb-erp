@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+<h2 class="text-center">Produto <%= produto.nomeProduto %></h2>
+
+<div class="container">
+	<hr>
+	<div class="row">
+		<div class="col-12">
+			<div class="clientes-view row py-4">
+				<div class="col-6">
+					<div class="col-12"><span class="attr2 col-12">Nome do produto: <%= produto.nomeProduto %></span></div>
+					<div class="col-12"><span class="attr2 col-12">SKU: <%= produto.sku %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Categoria: <%= produto.categoria %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Preço de venda: <%= produto.precoVenda %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Preço de custo: <%= produto.precoCusto %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Quantidade: <%= produto.quantidade %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Peso estimado: <%= produto.peso %></span></div>
+					<div class="col-12"><span class="attr2 col-12">URL de imagem do produto: <%= produto.img %></span></div>
+				</div>
+				<div class="col-6">
+					<div class="col-12 text-center">
+						<img class="img-fluid ml-auto mr-auto img-thumbnail" src="<%= produto.img %>"></img>
+					</div>
+				</div>
+				<div class="col-12 d-inline-block text-center mt-3" style="">
+					<a href="/produto/" class="btn btn-success mr-3">Voltar</a>
+					<a href="/produto/<%= produto._id %>/edit" class="btn btn-warning mr-3">Editar produto</a>
+					<form class="d-inline" action="/produto/<%= produto._id %>?_method=DELETE" method="post">
+						<input class="btn btn-warning" type="submit" name="Deletar produto" value="Deletar produto" style="cursor: pointer">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer %>

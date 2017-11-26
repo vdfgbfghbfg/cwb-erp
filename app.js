@@ -32,7 +32,6 @@ app.get('/cliente', (req,res) => {
 		if(error){console.log(error)}
 		else {
 			clientes.clientes = cliente;
-			
 			res.render('verClientes/verClientes', clientes)
 		}
 	})
@@ -42,7 +41,6 @@ app.get('/cliente/:id', (req,res) => {
 		if(error){
 			console.log(`Whoopsie. Erro: ${error}`);
 		} else {
-			console.log(cliente)
 			res.render('verCliente/verCliente', {cliente: cliente});
 		}
 	})
@@ -67,6 +65,15 @@ app.get('/produto', (req,res)=>{
 			res.render('verProdutos/verProdutos', {produtos: produtos});
 		};
 	})
+});
+app.get('/produto/:id', (req,res) => {
+	Produto.findById(req.params.id, (error, produto) => {
+		if(error){res.render('error/error', {error:error})}
+		else {
+			console.log(`O produto ${produto.nomeProduto} foi visualizado.`);
+			res.render('verProduto/verProduto', {produto: produto});
+		}
+	});
 });
 //post routes
 app.post('/cliente/new', (req,res) => {

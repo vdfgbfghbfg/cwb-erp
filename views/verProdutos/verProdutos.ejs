@@ -7,13 +7,13 @@
 		<% produtos.forEach(produto => { %>
 		<div class="col-12">
 			<div class="clientes-view row">
-				<div class="col-12 col-sm-3 d-inline"><span class="attr">Nome do produto: </span><span><%= produto.nomeProduto %></span></div>
-				<div class="col-12 col-sm-4 d-inline"><span class="attr">SKU: </span><span><%= produto.sku %></span></div>
-				<div class="col-12 col-sm-5 d-inline text-center" style="display: none !important">
+				<div class="col-12 col-sm-4 d-inline"><span class="attr">Nome do produto: </span><span><%= produto.nomeProduto %></span></div>
+				<div class="col-12 col-sm-3 d-inline"><span class="attr">SKU: </span><span><%= produto.sku %></span></div>
+				<div class="col-12 col-sm-5 d-inline text-center" style="">
 					<a class="btn btn-warning" href="/produto/<%= produto._id %>">Ver produto</a>
-					<a href="/produto/<%= produto._id %>/edit" class="btn btn-warning">Editar produto</a>
+					<a href="/produto/<%= produto._id %>/edit" class="btn btn-warning" style="display: none">Editar produto</a>
 					<form class="d-inline" action="/produto/<%= produto._id %>?_method=DELETE" method="post">
-						<input class="btn btn-warning" type="submit" name="Deletar produto" value="Deletar produto" style="cursor: pointer">
+						<input class="btn btn-warning" type="submit" name="Deletar produto" value="Deletar produto" style="cursor: pointer; display: none">
 					</form>
 				</div>
 			</div>
