@@ -55,3 +55,10 @@ li {
     font-family: 'Poiret One', cursive !important;
 }
 .dropdown-pedidos{display: none !important}
+.truncate {
+  width: 100%;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

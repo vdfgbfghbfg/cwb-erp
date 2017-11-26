@@ -75,6 +75,14 @@ app.get('/produto/:id', (req,res) => {
 		}
 	});
 });
+app.get('/produto/:id/edit', (req,res)=>{
+	Produto.findById(req.params.id, (error, produto)=>{
+		if(error){res.render('error/error', {error:error})}
+		else{
+			res.render('editarProduto/editarProduto', {produto: produto});
+		}
+	});
+});
 //post routes
 app.post('/cliente/new', (req,res) => {
 	var novoCliente = {
@@ -126,7 +134,18 @@ app.put('/cliente/:id/edit', (req,res) => {
 		}
 	})
 });
-
+app.put('/produto/:id/edit', (req,res)=>{
+	Produto.findByIdAndUpdate(req.params.id, req.body.produto, (error, produto)=>{
+		if(error){
+			console.log(error);
+			res.render('error/error', {error:error});
+		}
+		else {
+			console.log(`Produto ${produto.nomeProduto} atualilzado com sucesso`);
+			res.redirect('/produto/'+ produto._id);
+		}
+	});
+});
 //delete routes
 app.delete('/cliente/:id', (req,res) => {
 	Cliente.findByIdAndRemove(req.params.id, (error,deleted) => {
@@ -138,7 +157,19 @@ app.delete('/cliente/:id', (req,res) => {
 			res.redirect('/cliente');
 		}
 	});
-})
+});
+app.delete('/produto/:id', (req,res)=>{
+	Produto.findByIdAndRemove(req.params.id, (error, produto)=>{
+		if(error){
+			console.log(error);
+			res.render('error/error', {error:error});
+		}
+		else {
+			console.log(`Produto ${produto.nomeProduto} removido com sucesso`);
+			res.redirect('/produto');
+		}
+	});
+});
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log('Express server listening on port', port)

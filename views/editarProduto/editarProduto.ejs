@@ -1,10 +1,10 @@
 <% include ../partials/header %>
-<h2 class="text-center">Cadastrar novo produto</h2>
+<h2 class="text-center">Editar produto <%= produto.nomeProduto %></h2>
 <div class="container">
 	<hr>
 	<div class="row">
 		<div class="col mt-4 container">
-			<form class="" action="/produto/new" method="post">
+			<form class="" action="/produto/<%= produto._id %>/edit?_method=PUT" method="POST">
 				<div class="row">
 					<div class="col-6">
 						<input class="form-control my-2" type="text" name="produto[nomeProduto]" placeholder="Nome do produto" required />
@@ -37,7 +37,7 @@
 					</div>
 				</div>
 				<div class="text-center">
-					<a href="/produto" class="btn btn-success mr-3">Voltar</a>
+					<a href="/produto/<%= produto._id %>" class="btn btn-success mr-3">Voltar</a>
 					<input class="btn btn-warning my-3" type="submit" name="enviar" value="Enviar">	
 				</div>
 			</form>
