@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+<h2 class="text-center">Criar pedido</h2>
+
+<div class="container">
+	<hr>
+	<form action="/pedido/new" method="post">
+		<script type="text/javascript">
+			setTimeout(()=>{
+				var date = new Date().toLocaleString('pt-BR');
+				document.querySelector('#dataPedido').value = date;
+			},100);
+		</script>
+		<input type="hidden" id="dataPedido" name="pedido[dataPedido]" value="" / >
+		<div class="row mt-4">
+			<div class="col-12 col-md-6">
+				<p class="lead text-center">Selecione abaixo o cliente</p>
+				<select class="form-control client-select" name="pedido[cliente._id]">
+					<option>Clientes</option>
+				<% clientes.forEach(cliente => { %>
+					<option class="<%= cliente.nome %> <%= cliente.sobrenome %>" value="<%= cliente.nome %> <%= cliente.sobrenome %>"><%= cliente.nome %> <%= cliente.sobrenome %></option>
+				<% }) %>
+				</select>
+			</div>
+			<div class="col-12 col-md-6">
+				<p class="lead text-center">Selecione abaixo os produtos do pedido</p>
+				<div class="p-2 produtospedido">
+					<% for (var i = 0; i < produtos.length; i++) { %>
+						<div class="form-check">
+						  <label class="form-check-label w-100">
+						    <input class="form-check-input" type="checkbox" name="pedido[produtos.p<%= i %>._id]" value="<%= produtos[i]._id %>" />
+						    <%= produtos[i].nomeProduto %><p class="float-right m-0">Quantidade: <input class="produtospedido" type="number" name="pedido[produtos.p<%= i %>.quantidade]" /></p>
+						  </label>
+						</div>
+					<% } %>
+					<% produtos.forEach(produto => { %>
+
+					<% }) %>
+				</div>
+			</div>
+		</div>
+		<input type="submit" name="">
+	</form>
+</div>
+<% include ../partials/footer %>

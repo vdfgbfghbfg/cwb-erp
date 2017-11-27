@@ -54,11 +54,32 @@ li {
     font-weight: 600;
     font-family: 'Poiret One', cursive !important;
 }
-.dropdown-pedidos{display: none !important}
+
 .truncate {
   width: 100%;
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+#date {
+    position: fixed;
+    bottom: 10px;
+    list-style: none;
+    font-size: 0.9em;
+    right: 15px;
+}
+.qtdeprods{
+    font-family: 'Poiret One', cursive !important;
+    font-weight: 600;
+    position: fixed;
+    bottom: -6.5px;
+    list-style: none;
+    font-size: 1em;
+    left: 15px;
+    z-index: 999;
+}
+.produtospedido{
+    border: 1px solid #ced4da;
+    border-radius: 5px;
 }

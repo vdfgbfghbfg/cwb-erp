@@ -9,11 +9,20 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
-	<script src="https://use.fontawesome.com/82f7512523.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
 	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
 </head>
 <body>
 	<ul class="text-center mb-5 p-3 bg-light header-fixo">
+		<script type="text/javascript">
+			setTimeout(()=>{
+			var date = new Date;
+			date = date.toLocaleString('pt-BR')
+			document.querySelector('#date').innerHTML = date;
+			},100);
+		</script>
+
+		<li class="clock" id="date"></li>
 		<li class="d-inline mx-3"><a class="logo" style="font-family: 'Poiret One', cursive; font-size: 2em">deo</a></li>
 		<li class="d-inline mx-3"><a href="/"><i class="fa fa-home"></i> Inicio</a></li>
 		<div class="dropdown d-inline dropdown-clientes">

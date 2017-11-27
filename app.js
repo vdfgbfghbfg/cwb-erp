@@ -7,6 +7,7 @@ var path = require("path");
 var ejs = require('ejs-html');
 var Cliente = require('./models/cliente.model');
 var Produto = require('./models/produto.model');
+var Pedido = require('./models/pedido.model');
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -83,6 +84,32 @@ app.get('/produto/:id/edit', (req,res)=>{
 		}
 	});
 });
+app.get('/pedido', (req,res) => {
+	Pedido.find((error,pedidos)=>{
+		if(error){res.render('error/error', {error:error})}
+		else{
+			res.render('verPedidos/verPedidos', {pedidos: pedidos});
+		}
+	});
+});
+app.get('/pedido/new', (req,res)=>{
+	Cliente.find((error,clientes)=>{
+		if(error){res.render('error/error', {error:error})}
+		else{
+			Produto.find((error,produtos)=>{
+				if(error){res.render('error/error', {error:error})}
+				else {
+					Pedido.find((error,pedidos)=>{
+						if(error){res.render('error/error', {error:error})}
+						else{
+							res.render('novoPedido/novoPedido',{clientes:clientes, produtos: produtos});
+						}
+					});
+				};
+			});
+		}
+	})
+});
 //post routes
 app.post('/cliente/new', (req,res) => {
 	var novoCliente = {
@@ -123,6 +150,18 @@ app.post('/produto/new', (req,res)=>{
 		}
 	})
 });
+app.post('/pedido/new', (req,res)=>{
+	Pedido.create(req.body.pedido, (error,pedido)=>{
+		if(error){
+			console.log(error);
+			res.render('error/error', {error:error});
+		}
+		else {
+			console.log(pedido);
+			res.redirect('/pedido/');
+		}
+	});
+}),
 //update routes
 app.put('/cliente/:id/edit', (req,res) => {
 	Cliente.findByIdAndUpdate(req.params.id, req.body.cliente, (error,cliente) => {
