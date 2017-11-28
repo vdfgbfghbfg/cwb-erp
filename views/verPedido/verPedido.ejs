@@ -1,17 +1,15 @@
 <% include ../partials/header %>
-<h2 class="text-center">Todos os pedidos</h2>
-<p class="qtdeprods">Quantidade de pedidos: <%= pedidos.length %></p>
+<h2 class="text-center">Pedido <%= pedido._id %></h2>
 
 <div class="container">
 	<hr>
 	<div class="row">
-		<% pedidos.forEach(pedido => { %>
 		<div class="col-12">
 			<div class="clientes-view row">
 				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">Cliente: </span> <%= pedido.cliente.nome %></p></div>
 				<div class="col-12 col-sm-4 d-inline"><p class="truncate"><span class="attr">Data de criação: </span> <%= pedido.dataPedido %></p></div>
 				<div class="col-12 col-sm-5 d-inline text-center" style="">
-					<a class="btn btn-warning" href="/pedido/<%= pedido._id %>">Ver pedido</a>
+					<a class="btn btn-success" href="/pedido/">Voltar</a>
 					<a href="/pedido/<%= pedido._id %>/edit" class="btn btn-warning" style="">Editar pedido</a>
 					<form class="d-inline" action="/pedido/<%= pedido._id %>?_method=DELETE" method="post">
 						<input class="btn btn-warning" type="submit" name="Deletar pedido" value="Deletar pedido" style="cursor: pointer;">
@@ -19,7 +17,6 @@
 				</div>
 			</div>
 		</div>
-		<% }); %>
 	</div>
 </div>
 
