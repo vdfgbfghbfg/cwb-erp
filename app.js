@@ -85,6 +85,25 @@ app.get('/produto/:id/edit', (req,res)=>{
 		}
 	});
 });
+app.get('/pedido/:id/edit',(req,res)=>{
+	Pedido.findById(req.params.id, (error,pedido)=>{
+		if(error){
+				console.log(error);
+				res.render('error/error', {error:error});
+			}
+			else {
+				Cliente.findById(pedido.cliente._id, (error,cliente)=>{
+					if(error){
+						console.log(error);
+						res.render('error/error', {error:error});
+					}
+					else {
+						res.render('editarPedido/editarPedido', {pedido:pedido, cliente:cliente});
+					}
+				});
+			}
+		});
+});
 app.get('/pedido', (req,res) => {
 	Pedido.find((error,pedidos)=>{
 		if(error){res.render('error/error', {error:error})}
@@ -199,6 +218,18 @@ app.put('/produto/:id/edit', (req,res)=>{
 		else {
 			console.log(`Produto ${produto.nomeProduto} atualilzado com sucesso`);
 			res.redirect('/produto/'+ produto._id);
+		}
+	});
+});
+app.put('/pedido/:id/edit', (req,res)=>{
+	Pedido.findByIdAndUpdate(req.params.id, req.body.pedido, (error,pedido)=>{
+		if(error){
+			console.log(error);
+			res.render('error/error', {error:error});
+		}
+		else {
+			console.log(`Pedido ${pedido.nomeProduto} atualilzado com sucesso`);
+			res.redirect('/pedido/'+ pedido._id);
 		}
 	});
 });

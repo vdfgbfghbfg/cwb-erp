@@ -19,7 +19,7 @@ var pedidoSchema = new mongoose.Schema({
 		cidade:String,
 		estado:String
 	},
-	produtos: {type: Array, default: []}
+	produtos: Array
 });
 
 module.exports = mongoose.model('Pedido', pedidoSchema);

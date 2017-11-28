@@ -3,21 +3,32 @@
 
 <div class="container">
 	<hr>
-	<div class="row">
-		<div class="col-12">
-			<div class="clientes-view row">
-				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">Cliente: </span> <%= pedido.cliente.nome %></p></div>
-				<div class="col-12 col-sm-4 d-inline"><p class="truncate"><span class="attr">Data de criação: </span> <%= pedido.dataPedido %></p></div>
-				<div class="col-12 col-sm-5 d-inline text-center" style="">
-					<a class="btn btn-success" href="/pedido/">Voltar</a>
-					<a href="/pedido/<%= pedido._id %>/edit" class="btn btn-warning" style="">Editar pedido</a>
-					<form class="d-inline" action="/pedido/<%= pedido._id %>?_method=DELETE" method="post">
-						<input class="btn btn-warning" type="submit" name="Deletar pedido" value="Deletar pedido" style="cursor: pointer;">
-					</form>
+<div class="row mt-4">
+			<div class="col-12 col-md-6">
+				<p class="lead text-center">Dados do cliente</p>
+				<div class="col-12"><span class="attr2 col-12">Email: <%= cliente.email %></span></div>
+				<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= cliente.cpfcnpj %></span></div>
+				<div class="col-12"><span class="attr2 col-12">Nome: <%= cliente.nome %></span></div>
+				<div class="col-12"><span class="attr2 col-12">Celular: <%= cliente.celular %></span></div>
+				<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= cliente.telefone %></span></div>
+				<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
+			</div>
+			<div class="col-12 col-md-6">
+				<p class="lead text-center">Produtos do pedido</p>
+				<div class="p-2 produtospedido">
+					<% for (var i = 0; i < Object.keys(pedido.produtos[0]).length; i++) { %>
+						<p class="p-2 produtospedido"><%= pedido.produtos[i]._id %><span class="float-right">Qtde: <%= pedido.produtos[i].quantidade %></span></p>
+					<% } %>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="my-2 text-center ml-auto mr-auto">
+			<a href="/pedido" class="btn btn-success">Voltar</a>
+			<a href="/pedido/<%= pedido._id %>/" class="btn btn-info" style="">Gerar entrega</a>
+			<form class="d-inline" action="/pedido/<%= pedido._id %>?_method=DELETE" method="post">
+				<input class="btn btn-warning" type="submit" name="Deletar pedido" value="Deletar pedido" style="cursor: pointer;">
+			</form>
+		</div>
 </div>
 
 

@@ -1,0 +1,39 @@
+<% include ../partials/header %>
+<h2 class="text-center">Editar pedido <%= pedido._id %></h2>
+
+<div class="container">
+	<hr>
+	<form action="/pedido/new?_method=put" method="post">
+		<script type="text/javascript">
+			setTimeout(()=>{
+				var date = new Date().toLocaleString('pt-BR');
+				document.querySelector('#dataPedido').value = date;
+			},100);
+		</script>
+		<input type="hidden" id="dataPedido" name="pedido[dataPedido]" value="" / >
+		<div class="row mt-4">
+			<div class="col-12 col-md-6">
+				<p class="lead text-center">Dados do cliente</p>
+				<div class="col-12"><span class="attr2 col-12">Email: <%= pedido.cliente.email %></span></div>
+				<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= pedido.cliente.cpfcnpj %></span></div>
+				<div class="col-12"><span class="attr2 col-12">Nome: <%= pedido.cliente.nome %></span></div>
+				<div class="col-12"><span class="attr2 col-12">Celular: <%= pedido.cliente.celular %></span></div>
+				<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= pedido.cliente.telefone %></span></div>
+				<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= pedido.cliente.grupoCliente %></span></div>
+			</div>
+			<div class="col-12 col-md-6">
+				<p class="lead text-center">Produtos do pedido</p>
+				<div class="p-2 produtospedido">
+					<% for (var i = 0; i < Object.keys(pedido.produtos[0]).length; i++) { %>
+						<p class="p-2 produtospedido"><%= pedido.produtos[i]._id %><span class="float-right">Qtde: <%= pedido.produtos[i].quantidade %></span></p>
+					<% } %>
+				</div>
+			</div>
+		</div>
+		<div class="my-2 text-center ml-auto mr-auto">
+			<a href="/pedido" class="btn btn-success mr-3">Voltar</a>
+			<input type="submit" name="Enviar" value="Enviar" class="btn btn-warning ml-auto mr-auto">
+		</div>
+	</form>
+</div>
+<% include ../partials/footer %>

@@ -12,7 +12,7 @@
 				<div class="col-12 col-sm-4 d-inline"><p class="truncate"><span class="attr">Data de criação: </span> <%= pedido.dataPedido %></p></div>
 				<div class="col-12 col-sm-5 d-inline text-center" style="">
 					<a class="btn btn-warning" href="/pedido/<%= pedido._id %>">Ver pedido</a>
-					<a href="/pedido/<%= pedido._id %>/edit" class="btn btn-warning" style="">Editar pedido</a>
+					<a href="/pedido/<%= pedido._id %>/" class="btn btn-info" style="">Gerar entrega</a>
 					<form class="d-inline" action="/pedido/<%= pedido._id %>?_method=DELETE" method="post">
 						<input class="btn btn-warning" type="submit" name="Deletar pedido" value="Deletar pedido" style="cursor: pointer;">
 					</form>
