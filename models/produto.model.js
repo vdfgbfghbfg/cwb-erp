@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 
 var produtoSchema = new mongoose.Schema({
-	nomeProduto: {type: String},
+	nomeProduto: String,
 	sku: {type: String, unique: true},
-	peso: {type: Number},
-	quantidade: {type: Number},
-	precoVenda: {type: Number},
-	precoCusto: {type: Number},
-	img: {type: String},
+	peso: String,
+	quantidade: String,
+	precoVenda: String,
+	precoCusto: String,
+	img: Object,
 	categoria: String
 });
 

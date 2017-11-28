@@ -4,28 +4,28 @@
 	<hr>
 	<div class="row">
 		<div class="col mt-4 container">
-			<form class="" action="/produto/new" method="post">
+			<form class="" action="/produto/new" method="post" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[nomeProduto]" placeholder="Nome do produto" required />
+						<input class="form-control my-2" type="text" name="produto[nomeProduto]" placeholder="Nome do produto"  required />
 					</div>
 					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[sku]" placeholder="SKU" required />
+						<input class="form-control my-2" type="text" name="produto[sku]" placeholder="SKU"  required />
 					</div>
 					<div class="col-6">
-						<input class="form-control my-2" type="number" name="produto[precoVenda]" placeholder="Preço de venda" required />
+						<input class="form-control my-2" type="text" name="produto[precoVenda]" placeholder="Preço de venda"  required />
 					</div>
 					<div class="col-6">
-						<input class="form-control my-2" type="number" name="produto[precoCusto]" placeholder="Preço de custo" />
+						<input class="form-control my-2" type="text" name="produto[precoCusto]" placeholder="Preço de custo"  />
 					</div>
 					<div class="col-6">
-						<input class="form-control my-2" type="number" name="produto[quantidade]" placeholder="Quantidade disponível" required />
+						<input class="form-control my-2" type="text" name="produto[quantidade]" placeholder="Quantidade disponível"  required />
 					</div>
 					<div class="col-6">
-						<input class="form-control my-2" type="number" name="produto[peso]" placeholder="Peso estimado" />
+						<input class="form-control my-2" type="text" name="produto[peso]" placeholder="Peso estimado"  />
 					</div>
 					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[img]" placeholder="URL de imagem do produto" />
+						<input class="form-control my-2" type="file" name="img" placeholder="URL de imagem do produto" />
 					</div>
 					<div class="col-6">
 						<select name="produto[categoria]" class="form-control my-2">
@@ -44,5 +44,22 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$("input[name='produto[peso]']").mask("99.999");
+	var precoVendaInput = document.querySelector("input[name='produto[precoVenda]']");
+	var precoCustoInput = document.querySelector("input[name='produto[precoCusto]']");
 
+	precoVendaInput.addEventListener('keyup',()=>{
+		precoVendaInput.value = precoVendaInput.value.replace(".","");
+		precoVendaInput.value = numberWithCommas(precoVendaInput.value);
+	});
+	precoCustoInput.addEventListener('keyup',()=>{
+		precoCustoInput.value = precoCustoInput.value.replace(".","");
+		precoCustoInput.value = numberWithCommas(precoCustoInput.value);
+	});
+	
+	var numberWithCommas = (x) => {
+	  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+	}
+</script>
 <% include ../partials/footer %>

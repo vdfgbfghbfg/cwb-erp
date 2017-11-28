@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 <h2 class="text-center">Produto <%= produto.nomeProduto %></h2>
-
+<p class="qtdeprods">ID do produto: <%= produto._id %></p>
 <div class="container">
 	<hr>
 	<div class="row">
@@ -10,15 +10,14 @@
 					<div class="col-12"><span class="attr2 col-12">Nome do produto: <%= produto.nomeProduto %></span></div>
 					<div class="col-12"><span class="attr2 col-12">SKU: <%= produto.sku %></span></div>
 					<div class="col-12"><span class="attr2 col-12">Categoria: <%= produto.categoria %></span></div>
-					<div class="col-12"><span class="attr2 col-12">Preço de venda: <%= produto.precoVenda %></span></div>
-					<div class="col-12"><span class="attr2 col-12">Preço de custo: <%= produto.precoCusto %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Preço de venda: R$ <%= produto.precoVenda %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Preço de custo: R$ <%= produto.precoCusto %></span></div>
 					<div class="col-12"><span class="attr2 col-12">Quantidade: <%= produto.quantidade %></span></div>
-					<div class="col-12"><span class="attr2 col-12">Peso estimado: <%= produto.peso %></span></div>
-					<div class="col-12"><span class="attr2 col-12">URL de imagem do produto: <%= produto.img %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Peso estimado: <%= produto.peso %> kg</span></div>
 				</div>
 				<div class="col-6">
 					<div class="col-12 text-center">
-						<img class="img-fluid ml-auto mr-auto img-thumbnail" src="<%= produto.img %>"></img>
+						<img class="img-fluid ml-auto mr-auto img-thumbnail" src="<%= produto.img.caminho %>"></img>
 					</div>
 				</div>
 				<div class="col-12 d-inline-block text-center mt-3" style="">

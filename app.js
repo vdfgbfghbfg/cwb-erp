@@ -1,6 +1,7 @@
 var express = require('express');
 var expressSanitized = require("express-sanitized");
 var bodyParser = require("body-parser");
+var fs = require("fs-extra");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
 var path = require("path");
@@ -8,6 +9,8 @@ var ejs = require('ejs-html');
 var Cliente = require('./models/cliente.model');
 var Produto = require('./models/produto.model');
 var Pedido = require('./models/pedido.model');
+var multer = require('multer');
+var upload = multer({ dest: './public/uploads/'});
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,6 +22,7 @@ mongoose.connect("mongodb://dog:dog123@ds121456.mlab.com:21456/heroku_s2674vqf",
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride("_method"));
+
 
 app.get('/', (req,res) => {
 	res.render('home/home');
@@ -171,7 +175,10 @@ app.post('/cliente/new', (req,res) => {
 		}
 	});
 });
-app.post('/produto/new', (req,res)=>{
+app.post('/produto/new',upload.single('img'), (req,res)=>{
+	console.log(req.file)
+	req.body.produto.img = req.file;
+ 	req.body.produto.img.caminho = "/uploads/" + req.body.produto.img.filename;
 	Produto.create(req.body.produto, (error, produto) =>{
 		if(error){
 			console.log(error);
@@ -209,7 +216,11 @@ app.put('/cliente/:id/edit', (req,res) => {
 		}
 	})
 });
-app.put('/produto/:id/edit', (req,res)=>{
+app.put('/produto/:id/edit', upload.single('img'), (req,res)=>{
+	if(req.file){
+		req.body.produto.img = req.file;
+ 		req.body.produto.img.caminho = "/uploads/" + req.body.produto.img.filename;
+	}
 	Produto.findByIdAndUpdate(req.params.id, req.body.produto, (error, produto)=>{
 		if(error){
 			console.log(error);
