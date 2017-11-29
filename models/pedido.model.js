@@ -2,6 +2,12 @@ var mongoose = require('mongoose');
 
 var pedidoSchema = new mongoose.Schema({
 	dataPedido: String,
+	pagamento: {
+		forma: String,
+		nome: String,
+		status: {type: String, default: "Não finalizada"},
+		dataPgto: String
+	},
 	cliente: {
 		_id: String,
 		nome: String,

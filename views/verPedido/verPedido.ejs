@@ -19,13 +19,34 @@
 					<div class="p-2 produtospedido">
 						<% for (var i = 0; i < pedido.produtos.length; i++) { %>
 							<% if (pedido.produtos[i]._id) { %>
-							<div class="row produtospedido produtospedido2 my-2 mx-0">
-								<div class="col-5"><p class="truncate"><a style="text-decoration: underline !important;" href="/produto/<%= pedido.produtos[i].idOficial %>"><%= pedido.produtos[i]._id %></a></p></div>
-								<div class="col-4">Preço: R$ <span class="precoVenda"><%= pedido.produtos[i].precoVenda %></span></div>
-								<div class="col-3">Qtde: <%= pedido.produtos[i].quantidade %></div>
+							<div class="row produtospedido m-2 mx-0">
+								<div class="col-5">
+									<p class="truncate">
+										<a data-toggle="tooltip" data-placement="top" title="Ver produto" style="text-decoration: underline !important;" class="px-1" target="_blank" href="/produto/<%= pedido.produtos[i].idOficial %>"><i class="fa fa-search"></i></a> <%= pedido.produtos[i]._id %>
+									</p>
+								</div>
+								<div class="col-4">
+									Preço: R$ <span class="precoVenda"><%= pedido.produtos[i].precoVenda %></span>
+								</div>
+								<div class="col-3">
+									Qtde: <%= pedido.produtos[i].quantidade %>
+								</div>
 							</div>
 							<% } %>
 						<% } %>
+					</div>
+				</div>
+				<div class="pagamento my-2">
+					<p class="lead text-center">Pagamento</p>
+					<div class="produtospedido">
+						<div class="row m-2 mx-0">
+							<div class="produtospedido m-2 w-100">
+								<p class="truncate mx-15">Forma de pagamento: <%= pedido.pagamento.nome %></p>	
+							</div>
+							<div class="produtospedido m-2 w-100">
+								<p class="truncate mx-15">Status da transação: <%= pedido.pagamento.status %></p>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="totals my-2">

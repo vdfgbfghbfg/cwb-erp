@@ -26,6 +26,23 @@
 						document.getElementById('clientName').value = document.getElementById('clientId').selectedOptions[0].innerHTML;
 					});
 				</script>
+				<div class="formaspagamento mt-4">
+					<p class="lead text-center">Selecione abaixo a forma de pagamento</p>
+					<select id="paymentId" class="form-control pagamento-select" name="pedido[pagamento.forma]">
+						<option>Formas de pagamento</option>
+						<option value="boleto">Boleto</option>
+						<option value="deposito">Depósito</option>
+						<option value="cartaocredito">Cartão de crédito</option>
+						<option value="cartaodebito">Cartão de débido</option>
+						<option value="dinheiro">Dinheiro</option>
+					</select>
+					<input id="paymentName" type="hidden" name="pedido[pagamento.nome]">
+					<script type="text/javascript">
+						document.getElementById('paymentId').addEventListener('change', ()=>{
+							document.getElementById('paymentName').value = document.getElementById('paymentId').selectedOptions[0].innerHTML;
+						});
+					</script>
+				</div>
 			</div>
 			<div class="col-12 col-md-8">
 				<p class="lead text-center">Selecione abaixo os produtos do pedido</p>
