@@ -4,7 +4,7 @@ var produtoSchema = new mongoose.Schema({
 	nomeProduto: String,
 	sku: {type: String, unique: true},
 	peso: String,
-	quantidade: String,
+	quantidade: Number,
 	precoVenda: String,
 	precoCusto: String,
 	img: Object,

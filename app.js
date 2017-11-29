@@ -141,6 +141,7 @@ app.get('/pedido/:id',(req,res)=>{
 			Cliente.findById(pedido.cliente._id,(error,cliente)=>{
 				if(error){res.render('error/error', {error:error})}
 				else {
+					console.log(req.headers.referer);
 					res.render('verPedido/verPedido', {pedido: pedido, cliente: cliente});
 				}
 			})
@@ -199,7 +200,15 @@ app.post('/pedido/new', (req,res)=>{
 			res.render('error/error', {error:error});
 		}
 		else {
-			console.log(pedido);
+			req.body.produtos.forEach(produto => {
+				if(produto._id){
+					Produto.findByIdAndUpdate(produto.idOficial, {$inc:{quantidade: - produto.quantidade}},(error,produtoAtualizado)=>{
+						if(error){console.log(error)}
+					});
+					console.log(produto.quantidade);
+				}
+			})
+			/*console.log(pedido);*/
 			res.redirect('/pedido/' + pedido._id);
 
 		}

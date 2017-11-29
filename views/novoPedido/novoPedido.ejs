@@ -36,6 +36,7 @@
 							  	<div class="col-5 d-inline">
 							  		<input class="form-check-input produto<%= i+1 %>" type="checkbox" name="produtos[<%= i+1 %>][_id]" value="<%= produtos[i].nomeProduto %>" />
 							    <%= produtos[i].nomeProduto %>
+							    	<span class="d-none idproduto<%= i+1 %>"><input type="text" name="produtos[<%= i+1 %>][idOficial]" value="<%= produtos[i]._id %>"></span>
 							  	</div>
 							  	<div class="col-4 d-inline">
 							  		<p class="d-inline m-0">Preço: R$ <input style="width: 100px" class="produtospedido pl-2" type="text" name="produtos[<%= i+1 %>][precoVenda]" placeholder="<%= produtos[i].precoVenda %>"></p>

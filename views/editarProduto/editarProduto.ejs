@@ -20,7 +20,7 @@
 						<input class="form-control my-2" type="text" name="produto[precoCusto]" placeholder="Preço de custo" value="<%= produto.precoCusto %>" />
 					</div>
 					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[quantidade]" placeholder="Quantidade disponível" value="<%= produto.quantidade %>" required />
+						<input class="form-control my-2" type="number" name="produto[quantidade]" placeholder="Quantidade disponível" value="<%= produto.quantidade %>" required />
 					</div>
 					<div class="col-6">
 						<input class="form-control my-2" type="text" name="produto[peso]" placeholder="Peso estimado" value="<%= produto.peso %>" />
@@ -28,14 +28,14 @@
 					<div class="col-6">
 						<input class="form-control my-2" type="file" name="img" placeholder="URL de imagem do produto" />
 					</div>
-					<div class="col-6">
-						<select name="produto[categoria]" class="form-control my-2" value="<%= produto.categoria %>">
-							<option>Selecione a categoria</option>
-							<option>Categoria 1</option>
-							<option>Categoria 2</option>
-							<option>Categoria 3</option>
-						</select>
+					<div class='col-6 categoriaDiv'>
+							<button class="btn btn-info categoriaBtn mt-2">Quero alterar a categoria</button>
 					</div>
+					<script type="text/javascript">
+						document.querySelector('.categoriaBtn').addEventListener('click', () => {
+							document.querySelector('.categoriaDiv').innerHTML = "<select name='produto[categoria]' class='form-control my-2'><option>Selecione a categoria</option><option>Categoria 1</option><option>Categoria 2</option><option>Categoria 3</option></select>";
+						});
+					</script>
 				</div>
 				<div class="text-center">
 					<a href="/produto/<%= produto._id %>" class="btn btn-success mr-3">Voltar</a>

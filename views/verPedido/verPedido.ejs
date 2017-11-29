@@ -14,18 +14,33 @@
 				<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
 			</div>
 			<div class="col-12 col-md-6">
-				<p class="lead text-center">Produtos do pedido</p>
-				<div class="p-2 produtospedido">
-					<% for (var i = 0; i < pedido.produtos.length; i++) { %>
-						<% if (pedido.produtos[i]._id) { %>
-						<div class="row produtospedido produtospedido2 my-2 mx-0">
-							<div class="col-6"><%= pedido.produtos[i]._id %></div>
-							<div class="col-3">Preço: R$ <%= pedido.produtos[i].precoVenda %></div>
-							<div class="col-3">Qtde: <%= pedido.produtos[i].quantidade %></div>
-						</div>
-						<!-- <p class="p-2 produtospedido"><%= pedido.produtos[i]._id %><span class="float-right">Qtde: <%= pedido.produtos[i].quantidade %></span></p> -->
+				<div class="produtos">
+					<p class="lead text-center">Produtos do pedido</p>
+					<div class="p-2 produtospedido">
+						<% for (var i = 0; i < pedido.produtos.length; i++) { %>
+							<% if (pedido.produtos[i]._id) { %>
+							<div class="row produtospedido produtospedido2 my-2 mx-0">
+								<div class="col-5"><p class="truncate"><a style="text-decoration: underline !important;" href="/produto/<%= pedido.produtos[i].idOficial %>"><%= pedido.produtos[i]._id %></a></p></div>
+								<div class="col-4">Preço: R$ <span class="precoVenda"><%= pedido.produtos[i].precoVenda %></span></div>
+								<div class="col-3">Qtde: <%= pedido.produtos[i].quantidade %></div>
+							</div>
+							<% } %>
 						<% } %>
-					<% } %>
+					</div>
+				</div>
+				<div class="totals my-2">
+					<p class="lead float-right">Valor total: <span class="valorTotal"></span></p>
+					<script type="text/javascript">
+						var precos = document.querySelectorAll('.precoVenda');
+						var total = 0;
+						console.log('total:' + total);
+						precos.forEach(produto => {
+							console.log(Number((produto.innerHTML).replace(',','.')));
+							total += Number((produto.innerHTML).replace(',','.'));
+						});
+						console.log(total);
+						document.querySelector('.valorTotal').innerHTML = 'R$ ' + total.toString().replace('.',',');
+					</script>
 				</div>
 			</div>
 		</div>
