@@ -171,7 +171,7 @@ app.post('/cliente/new', (req,res) => {
 			res.render('error/error', {error:error});
 		} else {
 			console.log(`Cliente '${cliente.nome}' criado com sucesso.`)
-			res.redirect('/cliente');
+			res.redirect('/cliente/' + cliente._id);
 		}
 	});
 });
@@ -186,7 +186,7 @@ app.post('/produto/new',upload.single('img'), (req,res)=>{
 		}
 		else {
 			console.log(`Produto ${produto.nomeProduto} inserido com sucesso`);
-			res.redirect('/produto');
+			res.redirect('/produto/' + produto._id);
 		}
 	})
 });
@@ -200,7 +200,7 @@ app.post('/pedido/new', (req,res)=>{
 		}
 		else {
 			console.log(pedido);
-			res.redirect('/pedido/');
+			res.redirect('/pedido/' + pedido._id);
 
 		}
 	});
@@ -212,7 +212,7 @@ app.put('/cliente/:id/edit', (req,res) => {
 			console.log(error);
 		} else{
 			console.log(cliente);
-			res.redirect('/cliente/'+req.params.id);
+			res.redirect('/cliente/' + cliente.id);
 		}
 	})
 });

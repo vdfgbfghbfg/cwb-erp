@@ -110,3 +110,10 @@ a{
 .big-on-hover:hover{
     transform: scale(1.5) !important;
 }
+.hide{
+    display: none !important;
+}
+.produtospedido2{
+    width: 100%;
+    
+}

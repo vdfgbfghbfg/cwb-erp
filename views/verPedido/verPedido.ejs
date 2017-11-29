@@ -16,8 +16,15 @@
 			<div class="col-12 col-md-6">
 				<p class="lead text-center">Produtos do pedido</p>
 				<div class="p-2 produtospedido">
-					<% for (var i = 0; i < Object.keys(pedido.produtos[0]).length; i++) { %>
-						<p class="p-2 produtospedido"><%= pedido.produtos[i]._id %><span class="float-right">Qtde: <%= pedido.produtos[i].quantidade %></span></p>
+					<% for (var i = 0; i < pedido.produtos.length; i++) { %>
+						<% if (pedido.produtos[i]._id) { %>
+						<div class="row produtospedido produtospedido2 my-2 mx-0">
+							<div class="col-6"><%= pedido.produtos[i]._id %></div>
+							<div class="col-3">Preço: R$ <%= pedido.produtos[i].precoVenda %></div>
+							<div class="col-3">Qtde: <%= pedido.produtos[i].quantidade %></div>
+						</div>
+						<!-- <p class="p-2 produtospedido"><%= pedido.produtos[i]._id %><span class="float-right">Qtde: <%= pedido.produtos[i].quantidade %></span></p> -->
+						<% } %>
 					<% } %>
 				</div>
 			</div>
