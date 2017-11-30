@@ -1,7 +1,7 @@
 {
   "name": "cwb-erp",
   "version": "1.0.0",
-  "description": "ERP online",
+  "description": "ERP online!",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
