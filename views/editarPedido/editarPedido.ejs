@@ -13,13 +13,19 @@
 		<input type="hidden" id="dataPedido" name="pedido[dataPedido]" value="" / >
 		<div class="row mt-4">
 			<div class="col-12 col-md-6">
-				<p class="lead text-center">Dados do cliente</p>
-				<div class="col-12"><span class="attr2 col-12">Email: <%= pedido.cliente.email %></span></div>
-				<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= pedido.cliente.cpfcnpj %></span></div>
-				<div class="col-12"><span class="attr2 col-12">Nome: <%= pedido.cliente.nome %></span></div>
-				<div class="col-12"><span class="attr2 col-12">Celular: <%= pedido.cliente.celular %></span></div>
-				<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= pedido.cliente.telefone %></span></div>
-				<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= pedido.cliente.grupoCliente %></span></div>
+				<div class="dadosCliente">
+					<p class="lead text-center">Dados do cliente</p>
+					<div class="col-12"><span class="attr2 col-12">Email: <%= pedido.cliente.email %></span></div>
+					<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= pedido.cliente.cpfcnpj %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Nome: <%= pedido.cliente.nome %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Celular: <%= pedido.cliente.celular %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= pedido.cliente.telefone %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= pedido.cliente.grupoCliente %></span></div>
+				</div>
+				<div class="status">
+					<p class="lead text-center">Status do pedido</p>
+					
+				</div>
 			</div>
 			<div class="col-12 col-md-6">
 				<p class="lead text-center">Produtos do pedido</p>

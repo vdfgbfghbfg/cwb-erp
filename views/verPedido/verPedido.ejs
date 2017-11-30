@@ -2,40 +2,115 @@
 <h2 class="text-center">Pedido <%= pedido._id %></h2>
 
 <div class="container">
-	<hr>
 <div class="row mt-4">
-			<div class="col-12 col-md-6">
-				<p class="lead text-center">Dados do cliente</p>
-				<div class="col-12"><span class="attr2 col-12">Email: <%= cliente.email %></span></div>
-				<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= cliente.cpfcnpj %></span></div>
-				<div class="col-12"><span class="attr2 col-12">Nome: <%= cliente.nome %></span></div>
-				<div class="col-12"><span class="attr2 col-12">Celular: <%= cliente.celular %></span></div>
-				<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= cliente.telefone %></span></div>
-				<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
-			</div>
-			<div class="col-12 col-md-6">
-				<div class="produtos">
-					<p class="lead text-center">Produtos do pedido</p>
-					<div class="p-2 produtospedido">
-						<% for (var i = 0; i < pedido.produtos.length; i++) { %>
-							<% if (pedido.produtos[i]._id) { %>
-							<div class="row produtospedido m-2 mx-0">
-								<div class="col-5">
-									<p class="truncate">
-										<a data-toggle="tooltip" data-placement="top" title="Ver produto" style="text-decoration: underline !important;" class="px-1" target="_blank" href="/produto/<%= pedido.produtos[i].idOficial %>"><i class="fa fa-search"></i></a> <%= pedido.produtos[i]._id %>
-									</p>
-								</div>
-								<div class="col-4">
-									Preço: R$ <span class="precoVenda"><%= pedido.produtos[i].precoVenda %></span>
-								</div>
-								<div class="col-3">
-									Qtde: <%= pedido.produtos[i].quantidade %>
+	<div class="col-12">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+		  <li class="nav-item">
+		    <a class="nav-link active" id="visaoGeral-tab" data-toggle="tab" href="#visaoGeral" role="tab" aria-controls="visaoGeral" aria-selected="true">Visão geral</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="dadosCliente-tab" data-toggle="tab" href="#dadosCliente" role="tab" aria-controls="dadosCliente" aria-selected="false">Dados do cliente</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="endereco-tab" data-toggle="tab" href="#endereco" role="tab" aria-controls="endereco" aria-selected="false">Endereço para entrega</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="status-tab" data-toggle="tab" href="#status" role="tab" aria-controls="status" aria-selected="false">Status do pedido</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="produtos-tab" data-toggle="tab" href="#produtos" role="tab" aria-controls="produtos" aria-selected="false">Produtos</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" id="pagamento-tab" data-toggle="tab" href="#pagamento" role="tab" aria-controls="pagamento" aria-selected="false">Pagamento</a>
+		  </li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+		  <div class="tab-pane fade show active" id="visaoGeral" role="tabpanel" aria-labelledby="visaoGeral-tab">
+		  	<div class="container">
+		  		<div class="row mt-4">
+		  			<div class="col-12 col-md-6">
+				  		<div class="dadosCliente">
+							<p class="lead text-center">Dados do cliente</p>
+							<div class="col-12"><span class="attr2 col-12">Email: <%= cliente.email %></span></div>
+							<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= cliente.cpfcnpj %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Nome: <%= cliente.nome %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Celular: <%= cliente.celular %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= cliente.telefone %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
+						</div>
+						<div class="endereco">
+							<p class="lead text-center">Endereço para entrega</p>
+							<div class="col-12"><span class="attr2 col-12">CEP: <%= cliente.cep %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Rua: <%= cliente.rua %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Número: <%= cliente.numero %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Complemento: <%= cliente.complemento %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Bairro: <%= cliente.bairro %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Cidade: <%= cliente.cidade %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Estado: <%= cliente.estado %></span></div>
+						</div>
+
+		  			</div>
+		  	<div class="col-12 col-md-6">
+		  				<div class="produtos">
+							<p class="lead text-center">Produtos do pedido</p>
+							<div class="p-2 produtospedido">
+								<% for (var i = 0; i < pedido.produtos.length; i++) { %>
+									<% if (pedido.produtos[i]._id) { %>
+									<div class="row produtospedido m-2 mx-0">
+										<div class="col-5">
+											<p class="truncate">
+												<a data-toggle="tooltip" data-placement="top" title="Ver produto" style="text-decoration: underline !important;" class="px-1" target="_blank" href="/produto/<%= pedido.produtos[i].idOficial %>"><i class="fa fa-search"></i></a> <%= pedido.produtos[i]._id %>
+											</p>
+										</div>
+										<div class="col-4">
+											Preço: R$ <span class="precoVenda"><%= pedido.produtos[i].precoVenda %></span>
+										</div>
+										<div class="col-3">
+											Qtde: <%= pedido.produtos[i].quantidade %>
+										</div>
+										<span class="d-none hiddenPrice"><%= pedido.produtos[i].quantidade * pedido.produtos[i].precoVenda %></span>
+									</div>
+									<% } %>
+								<% } %>
+							</div>
+						</div>
+		  				<div class="status my-2">
+							<p class="lead text-center">Status do pedido</p>
+							<div class="produtospedido">
+								<div class="row m-2 mx-0">
+									<div class="produtospedido m-2 w-100">
+										<p class="truncate mx-15">Status atual: <%= pedido.status.nome %></p>	
+									</div>
+									<div class="produtospedido m-2 w-100">
+										<p class="truncate mx-15 d-inline">
+											Alterar status:
+										</p>
+										<form class="d-inline" method="post" action="/pedido/<%= pedido._id %>/edit?_method=put">
+											<div class="input-group w-50 m-3 d-inline-flex z-index-0">
+												<select id="statusId2" name="pedido[status._id]" class="form-control">
+													<option value="1">Iniciado</option>
+													<option value="2">Aguardando pagamento</option>
+													<option value="3">Processando</option>
+													<option value="4">Enviado</option>
+													<option value="5">Completo</option>
+												</select>
+												<input id="statusName2" type="hidden" name="pedido[status.nome]">
+												<span class="input-group-btn">
+											      	<input class="btn btn-success" type="submit" value="Salvar" />
+											    </span>
+											</div>
+										</form>
+										<script type="text/javascript">
+											document.getElementById('statusId2').addEventListener('change', ()=>{
+												document.getElementById('statusName2').value = document.getElementById('statusId2').selectedOptions[0].innerHTML;
+											});
+										</script>
+									</div>
 								</div>
 							</div>
-							<% } %>
-						<% } %>
-					</div>
-				</div>
+						
+						</div>
+
 				<div class="pagamento my-2">
 					<p class="lead text-center">Pagamento</p>
 					<div class="produtospedido">
@@ -51,8 +126,140 @@
 				</div>
 				<div class="totals my-2">
 					<p class="lead float-right">Valor total: <span class="valorTotal"></span></p>
-					<script type="text/javascript">
-						var precos = document.querySelectorAll('.precoVenda');
+					
+				</div>
+			</div>
+		  		</div>
+		  	</div>
+		  </div>
+		  <div class="tab-pane fade" id="dadosCliente" role="tabpanel" aria-labelledby="dadosCliente-tab">
+		  		<div class="dadosCliente mt-4">
+					<p class="lead text-center d-none">Dados do cliente</p>
+					<div class="col-12"><span class="attr2 col-12">Email: <%= cliente.email %></span></div>
+					<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= cliente.cpfcnpj %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Nome: <%= cliente.nome %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Celular: <%= cliente.celular %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= cliente.telefone %></span></div>
+					<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
+				</div>
+		  </div>
+		  <div class="tab-pane fade" id="endereco" role="tabpanel" aria-labelledby="endereco-tab">
+
+						<div class="endereco mt-4">
+							<p class="lead text-center d-none">Endereço para entrega</p>
+							<div class="col-12"><span class="attr2 col-12">CEP: <%= cliente.cep %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Rua: <%= cliente.rua %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Número: <%= cliente.numero %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Complemento: <%= cliente.complemento %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Bairro: <%= cliente.bairro %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Cidade: <%= cliente.cidade %></span></div>
+							<div class="col-12"><span class="attr2 col-12">Estado: <%= cliente.estado %></span></div>
+						</div>
+		  </div>
+		  <div class="tab-pane fade" id="status" role="tabpanel" aria-labelledby="status-tab">
+		  		<div class="status my-2 mt-4">
+					<p class="lead text-center d-none">Status do pedido</p>
+					<div class="produtospedido">
+						<div class="row m-2 mx-0">
+							<div class="produtospedido m-2 w-100">
+								<p class="truncate mx-15">Status atual: <%= pedido.status.nome %></p>	
+							</div>
+							<div class="produtospedido m-2 w-100">
+								<p class="truncate mx-15 d-inline">
+									Alterar status:
+								</p>
+								<form class="d-inline" method="post" action="/pedido/<%= pedido._id %>/edit?_method=put">
+									<div class="input-group w-50 m-3 d-inline-flex z-index-0">
+										<select id="statusId" name="pedido[status._id]" class="form-control">
+											<option value="1">Iniciado</option>
+											<option value="2">Aguardando pagamento</option>
+											<option value="3">Processando</option>
+											<option value="4">Enviado</option>
+											<option value="5">Completo</option>
+										</select>
+										<input id="statusName" type="hidden" name="pedido[status.nome]">
+										<span class="input-group-btn">
+									      	<input class="btn btn-success" type="submit" value="Salvar" />
+									    </span>
+									</div>
+								</form>
+								<script type="text/javascript">
+									document.getElementById('statusId').addEventListener('change', ()=>{
+										document.getElementById('statusName').value = document.getElementById('statusId').selectedOptions[0].innerHTML;
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+		  </div>
+		  <div class="tab-pane fade" id="produtos" role="tabpanel" aria-labelledby="produtos-tab">
+		  		<div class="produtos mt-4">
+					<p class="lead text-center d-none">Produtos do pedido</p>
+					<div class="p-2 produtospedido">
+						<% for (var i = 0; i < pedido.produtos.length; i++) { %>
+							<% if (pedido.produtos[i]._id) { %>
+							<div class="row produtospedido m-2 mx-0">
+								<div class="col-5">
+									<p class="truncate">
+										<a data-toggle="tooltip" data-placement="top" title="Ver produto" style="text-decoration: underline !important;" class="px-1" target="_blank" href="/produto/<%= pedido.produtos[i].idOficial %>"><i class="fa fa-search"></i></a> <%= pedido.produtos[i]._id %>
+									</p>
+								</div>
+								<div class="col-4">
+									Preço: R$ <span class="precoVenda2"><%= pedido.produtos[i].precoVenda %></span>
+								</div>
+								<div class="col-3">
+									Qtde: <%= pedido.produtos[i].quantidade %>
+								</div>
+							</div>
+							<% } %>
+						<% } %>
+					</div>
+					
+				<div class="totals my-2">
+					<p class="lead float-right">Valor total: <span class="valorTotal"></span></p>
+				</div>
+				</div>
+		  </div>
+		  <div class="tab-pane fade" id="pagamento" role="tabpanel" aria-labelledby="pagamento-tab">
+		  		<div class="pagamento my-2 mt-4">
+					<p class="lead text-center d-none">Pagamento</p>
+					<div class="produtospedido">
+						<div class="row m-2 mx-0">
+							<div class="produtospedido m-2 w-100">
+								<p class="truncate mx-15">Forma de pagamento: <%= pedido.pagamento.nome %></p>	
+							</div>
+							<div class="produtospedido m-2 w-100">
+								<p class="truncate mx-15">Status da transação: <%= pedido.pagamento.status %></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="totals my-2">
+					<p class="lead float-right">Valor total: <span class="valorTotal"></span></p>
+				</div>
+		  </div>
+		</div>
+	</div>
+			<div class="col-12 col-md-6">
+
+
+			</div>
+			<div class="col-12 col-md-6">
+
+
+			</div>
+		</div>
+		<div class="my-2 text-center ml-auto mr-auto">
+			<a href="/pedido" class="btn btn-success">Voltar</a>
+			<form class="d-inline" action="/pedido/<%= pedido._id %>?_method=DELETE" method="post">
+				<input class="btn btn-warning" type="submit" name="Deletar pedido" value="Deletar pedido" style="cursor: pointer;">
+			</form>
+		</div>
+</div>
+
+<script type="text/javascript">
+						var precos = document.querySelectorAll('.hiddenPrice');
 						var total = 0;
 						console.log('total:' + total);
 						precos.forEach(produto => {
@@ -60,19 +267,7 @@
 							total += Number((produto.innerHTML).replace(',','.'));
 						});
 						console.log(total);
-						document.querySelector('.valorTotal').innerHTML = 'R$ ' + total.toString().replace('.',',');
-					</script>
-				</div>
-			</div>
-		</div>
-		<div class="my-2 text-center ml-auto mr-auto">
-			<a href="/pedido" class="btn btn-success">Voltar</a>
-			<a href="/pedido/<%= pedido._id %>/" class="btn btn-info" style="">Gerar entrega</a>
-			<form class="d-inline" action="/pedido/<%= pedido._id %>?_method=DELETE" method="post">
-				<input class="btn btn-warning" type="submit" name="Deletar pedido" value="Deletar pedido" style="cursor: pointer;">
-			</form>
-		</div>
-</div>
-
+						document.querySelectorAll('.valorTotal').forEach(span => {span.innerHTML = 'R$ ' + total.toString().replace('.',',')});
+</script>
 
 <% include ../partials/footer %>

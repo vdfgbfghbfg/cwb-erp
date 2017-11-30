@@ -1,4 +1,9 @@
 var mongoose = require('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
+var connection = mongoose.connect("mongodb://dog:dog123@ds121456.mlab.com:21456/heroku_s2674vqf", {useMongoClient: true}, function(){
+	console.log("and MongoDB is ok!")
+});;
+autoIncrement.initialize(connection);
 
 var clienteSchema = new mongoose.Schema({
 	nome: {type: String, required: true},
@@ -17,4 +22,5 @@ var clienteSchema = new mongoose.Schema({
 	estado:{type: String}
 	});
 
-module.exports = mongoose.model('Cliente', clienteSchema);
+clienteSchema.plugin(autoIncrement.plugin, 'Cliente');
+module.exports = connection.model('Cliente', clienteSchema);

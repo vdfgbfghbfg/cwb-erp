@@ -11,6 +11,7 @@ var Produto = require('./models/produto.model');
 var Pedido = require('./models/pedido.model');
 var multer = require('multer');
 var upload = multer({ dest: './public/uploads/'});
+var autoIncrement = require('mongoose-auto-increment');
 var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,6 +20,8 @@ app.use(expressSanitized());
 mongoose.connect("mongodb://dog:dog123@ds121456.mlab.com:21456/heroku_s2674vqf", {useMongoClient: true}, function(){
 	console.log("and MongoDB is ok!")
 });
+var connection = mongoose.createConnection("mongodb://dog:dog123@ds121456.mlab.com:21456/heroku_s2674vqf");
+autoIncrement.initialize(connection);
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride("_method"));
@@ -192,7 +195,6 @@ app.post('/produto/new',upload.single('img'), (req,res)=>{
 	})
 });
 app.post('/pedido/new', (req,res)=>{
-	console.log(req.body.produtos);
 	req.body.pedido.produtos = req.body.produtos;
 	Pedido.create(req.body.pedido, (error,pedido)=>{
 		if(error){
@@ -205,7 +207,7 @@ app.post('/pedido/new', (req,res)=>{
 					Produto.findByIdAndUpdate(produto.idOficial, {$inc:{quantidade: - produto.quantidade}},(error,produtoAtualizado)=>{
 						if(error){console.log(error)}
 					});
-					console.log(produto.quantidade);
+					
 				}
 			})
 			/*console.log(pedido);*/

@@ -1,7 +1,28 @@
 var mongoose = require('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
+
+var connection = mongoose.connect("mongodb://dog:dog123@ds121456.mlab.com:21456/heroku_s2674vqf", {useMongoClient: true}, function(){
+	console.log("and MongoDB is ok!")
+});;
+ 
+autoIncrement.initialize(connection);
+
 
 var pedidoSchema = new mongoose.Schema({
+	pedidoId: Number,
 	dataPedido: String,
+	data: {
+		dia: Number,
+		mes: {
+			numero: Number,
+			nome: String
+			},
+		ano: Number
+	},
+	status: {
+		_id: String,
+		nome: {type:String, default: "Iniciado"}
+	},
 	pagamento: {
 		forma: String,
 		nome: String,
@@ -27,5 +48,5 @@ var pedidoSchema = new mongoose.Schema({
 	},
 	produtos: Array
 });
-
-module.exports = mongoose.model('Pedido', pedidoSchema);
+pedidoSchema.plugin(autoIncrement.plugin, 'Pedido');
+module.exports = connection.model('Pedido', pedidoSchema);

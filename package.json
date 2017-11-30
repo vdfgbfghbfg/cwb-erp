@@ -23,7 +23,6 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-beta.2",
-    "ejs": "^2.5.7",
     "ejs-html": "^4.0.3",
     "express": "^4.16.2",
     "express-sanitized": "^0.5.1",
@@ -31,6 +30,7 @@
     "fs-extra": "^4.0.2",
     "method-override": "^2.3.10",
     "mongoose": "^4.13.5",
+    "mongoose-auto-increment": "^5.0.1",
     "multer": "^1.3.0",
     "path": "^0.12.7",
     "underscore": "^1.8.3"

@@ -1,16 +1,23 @@
 <% include ../partials/header %>
 <h2 class="text-center">Criar pedido</h2>
-
+<% var data = new Date; %>
 <div class="container">
 	<hr>
 	<form action="/pedido/new" method="post">
 		<script type="text/javascript">
 			setTimeout(()=>{
-				var date = new Date().toLocaleString('pt-BR');
-				document.querySelector('#dataPedido').value = date;
+				var date = new Date();
+				document.querySelector('#dataPedido').value = date.toLocaleString('pt-BR');
+				document.querySelector('#mesNome').value = date.getMonthName();
 			},100);
 		</script>
 		<input type="hidden" id="dataPedido" name="pedido[dataPedido]" value="" / >
+		<input type="hidden" name="pedido[data.mes.numero]" value="<%= data.getMonth() %>" />
+		<input id="mesNome" type="hidden" name="pedido[data.mes.nome]" />
+		<input type="hidden" name="pedido[data.ano]" value="<%= data.getUTCFullYear() %>" />
+		<input type="hidden" name="pedido[data.dia]" value="<%= data.getUTCDate() %>" />
+		<input type="hidden" name="pedido[status._id]" value="1" />
+		<input type="hidden" name="pedido[pedidoId]" value="0" />
 		<div class="row mt-4">
 			<div class="col-12 col-md-4">
 				<p class="lead text-center">Selecione abaixo o cliente</p>

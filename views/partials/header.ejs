@@ -14,18 +14,24 @@
 	<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	<link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
 	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+	<script type="text/javascript">
+	Date.prototype.monthNames = [
+	    "Janeiro", "Fevereiro", "Março",
+	    "Abril", "Maio", "Junho",
+	    "Julho", "Agosto", "Setembro",
+	    "Outubro", "Novembro", "Dezembro"
+	];
+
+	Date.prototype.getMonthName = function() {
+	    return this.monthNames[this.getMonth()];
+	};
+	Date.prototype.getShortMonthName = function () {
+	    return this.getMonthName().substr(0, 3);
+	};
+	</script>
 </head>
 <body>
 	<ul class="text-center mb-5 p-3 bg-light header-fixo light-drop-shadow">
-		<script type="text/javascript">
-			setTimeout(()=>{
-			var date = new Date;
-			date = date.toLocaleString('pt-BR')
-			document.querySelector('#date').innerHTML = date;
-			},100);
-		</script>
-
-		<li class="clock" id="date"></li>
 		<div class="dropdown dropdown2 d-none d-md-block dropdown-acesso mb-2 ">
 			<li class="d-inline mx-3 dropdown-toggle" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Acesso rápido </li>
 			<div class="dropdown-menu dropdown-menu-dog light-drop-shadow" aria-labelledby="dropdownMenuButton4">

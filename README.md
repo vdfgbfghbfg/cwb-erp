@@ -3,14 +3,14 @@
 # A fazer:
 #
 #
-#pedido
+# pedido
 #	ok preço dos produtos
 #	ok valor total
-#	forma de pgto
-#	formas de envio
-#	status do pedido
-#	data separada em dia, mês, e ano
-#	id unico pedido
+#	ok forma de pgto
+#	ok formas de envio
+#	ok status do pedido
+#	ok data separada em dia, mês, e ano
+#	ok id unico pedido
 #
 #
 #produtos

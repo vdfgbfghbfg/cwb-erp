@@ -1,5 +1,13 @@
 </div>
 <footer class="container-fluid bg-light mt-5 fixed-footer light-drop-shadow2">
+	<li class="clock" id="date"></li>
+	<script type="text/javascript">
+		setTimeout(()=>{
+		var date = new Date;
+		document.querySelector('#date').innerHTML = date.toLocaleString('pt-BR');
+		date = new Date;
+		},100);
+	</script>
 	<div class="row">
 		<div class="col-12">
 			<p class="text-center m-0 p-2 poiret-600">DEO v1 @ 2017 Doglab Creations</p>
@@ -25,6 +33,8 @@
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip()
 	})
+
+	var data = new Date;
 </script>
 </body>
 </html>
