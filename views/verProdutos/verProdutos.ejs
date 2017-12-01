@@ -7,9 +7,9 @@
 		<% produtos.forEach(produto => { %>
 		<div class="col-12">
 			<div class="clientes-view row">
-				<div class="col-12 col-sm-5 d-inline"><p class="truncate"><span class="attr">Nome do produto: </span> <%= produto.nomeProduto %></p></div>
+				<div class="col-12 col-sm-4 d-inline"><p class="truncate"><span class="attr">Nome: </span> <%= produto.nomeProduto %></p></div>
 				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">SKU: </span> <%= produto.sku %></p></div>
-				<div class="col-12 col-sm-2 d-inline"><p class="truncate"><span class="attr">Em estoque: </span> <%= produto.quantidade %></p></div>
+				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">Em estoque: </span> <%= produto.quantidade %></p></div>
 				<div class="col-12 col-sm-2 d-inline text-center" style="">
 					<a class="btn btn-warning" href="/produto/<%= produto._id %>">Ver produto</a>
 				</div>

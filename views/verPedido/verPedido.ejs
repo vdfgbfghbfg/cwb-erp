@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<h2 class="text-center">Pedido <%= pedido._id %></h2>
+<h2 class="text-center">Pedido <%= pedido.pedidoId2 %></h2>
 
 <div class="container">
 <div class="row mt-4">
@@ -37,8 +37,9 @@
 							<div class="col-12"><span class="attr2 col-12">Celular: <%= cliente.celular %></span></div>
 							<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= cliente.telefone %></span></div>
 							<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
+							<div class="col-12 my-2 text-center"><a class="btn text-center btn btn-warning" href="/cliente/<%= pedido.cliente._id %>">Ver cadastro do cliente</a></div>
 						</div>
-						<div class="endereco">
+						<div class="endereco mt-4">
 							<p class="lead text-center">Endereço para entrega</p>
 							<div class="col-12"><span class="attr2 col-12">CEP: <%= cliente.cep %></span></div>
 							<div class="col-12"><span class="attr2 col-12">Rua: <%= cliente.rua %></span></div>

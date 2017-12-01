@@ -6,6 +6,7 @@ var connection = mongoose.connect("mongodb://dog:dog123@ds121456.mlab.com:21456/
 autoIncrement.initialize(connection);
 
 var produtoSchema = new mongoose.Schema({
+	produtoId: Number,
 	nomeProduto: String,
 	sku: {type: String, unique: true},
 	peso: String,
@@ -16,5 +17,5 @@ var produtoSchema = new mongoose.Schema({
 	categoria: String
 });
 
-produtoSchema.plugin(autoIncrement.plugin, 'Produto');
+produtoSchema.plugin(autoIncrement.plugin, { model: 'Produto', field: 'produtoId' });
 module.exports = mongoose.model('Produto', produtoSchema);

@@ -45,10 +45,11 @@ app.get('/cliente', (req,res) => {
 	})
 });
 app.get('/cliente/:id', (req,res) => {
-	Cliente.findById(req.params.id, (error, cliente) => {
+	Cliente.findById(req.params.id).populate("pedidos").exec((error, cliente) => {
 		if(error){
 			console.log(`Whoopsie. Erro: ${error}`);
 		} else {
+			console.log(cliente.pedido);
 			res.render('verCliente/verCliente', {cliente: cliente});
 		}
 	})
@@ -144,7 +145,6 @@ app.get('/pedido/:id',(req,res)=>{
 			Cliente.findById(pedido.cliente._id,(error,cliente)=>{
 				if(error){res.render('error/error', {error:error})}
 				else {
-					console.log(req.headers.referer);
 					res.render('verPedido/verPedido', {pedido: pedido, cliente: cliente});
 				}
 			})
@@ -202,6 +202,21 @@ app.post('/pedido/new', (req,res)=>{
 			res.render('error/error', {error:error});
 		}
 		else {
+			var novoPedido = 
+			Cliente.findById(pedido.cliente._id, (error,cliente)=>{
+				if(error){
+					console.log(error);
+					res.render('error/error', {error:error});
+				}
+				else{
+					console.log('Prestes a pushar o pedido na array pedidos do cliente. Pedido: ' + pedido + '. Cliente antes: ' + cliente);
+					cliente.pedidos.push(pedido);
+					cliente.save((error,cliente)=>{
+						if(error){console.log('opa! paramos salvando o cliente. Erro:' + error)}
+					});
+					console.log('Cliente depois: ' + cliente);
+				}
+			});
 			req.body.produtos.forEach(produto => {
 				if(produto._id){
 					Produto.findByIdAndUpdate(produto.idOficial, {$inc:{quantidade: - produto.quantidade}},(error,produtoAtualizado)=>{

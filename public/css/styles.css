@@ -131,3 +131,8 @@ a{
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
     border-bottom-color: transparent !important;
 }
+.attr3{
+    background-color: #7f9ebc47;
+    border-radius: 5px;
+    margin: 0px 20px 10px 0;
+}
