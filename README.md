@@ -25,3 +25,4 @@
 #relatorios
 #configurações
 #autenticação/login
+#método pgto

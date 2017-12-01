@@ -8,6 +8,7 @@ var path = require("path");
 var ejs = require('ejs-html');
 var Cliente = require('./models/cliente.model');
 var Produto = require('./models/produto.model');
+var Categoria = require('./models/categoria.model');
 var Pedido = require('./models/pedido.model');
 var multer = require('multer');
 var upload = multer({ dest: './public/uploads/'});
@@ -150,6 +151,17 @@ app.get('/pedido/:id',(req,res)=>{
 			})
 		}
 	})
+});
+app.get('/categoria', (req,res)=>{
+	Categoria.find((error,categorias)=>{
+		if(error){res.render('error/error', {error:error})}
+		else {
+			res.render('verCategorias/verCategorias',{categorias: categorias});
+		}
+	});
+});
+app.get('/categoria/new', (req,res)=>{
+	res.render('novaCategoria/novaCategoria');
 });
 //post routes
 app.post('/cliente/new', (req,res) => {

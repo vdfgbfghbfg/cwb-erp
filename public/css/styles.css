@@ -26,8 +26,8 @@ a:hover {
 .attr {
     background-color: #7f9ebc;
     border-radius: 5px;
-    padding: 0px 10px 3px 10px;
-    margin: 5px 20px 5px 0;
+    padding: 0px 5px 3px 5px;
+    margin: 5px 5px 5px 0;
     display: inline-block;
 }
 .attr2 {
@@ -135,4 +135,10 @@ a{
     background-color: #7f9ebc47;
     border-radius: 5px;
     margin: 0px 20px 10px 0;
+}
+.pedidostab{
+    background: #f8f9fa;
+    top: 125px;
+    border-radius: 0px 0px 10px 10px;
+    filter: drop-shadow(0px 2px 1px rgba(0, 0, 0,0.2));
 }

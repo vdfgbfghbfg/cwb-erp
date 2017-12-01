@@ -1,10 +1,15 @@
 <% include ../partials/header %>
+
+<% var total = 0; %>
+<% pedido.produtos.forEach(produto => { %>
+	<% total += produto.precoVenda * produto.quantidade %>
+<% }); %>
 <h2 class="text-center">Pedido <%= pedido.pedidoId2 %></h2>
 
 <div class="container">
 <div class="row mt-4">
 	<div class="col-12">
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<ul class="nav nav-pills sticky-top pedidostab pt-3 pb-3 px-3 justify-content-between" id="myTab" role="tablist">
 		  <li class="nav-item">
 		    <a class="nav-link active" id="visaoGeral-tab" data-toggle="tab" href="#visaoGeral" role="tab" aria-controls="visaoGeral" aria-selected="true">Visão geral</a>
 		  </li>
@@ -69,7 +74,7 @@
 										<div class="col-3">
 											Qtde: <%= pedido.produtos[i].quantidade %>
 										</div>
-										<span class="d-none hiddenPrice"><%= pedido.produtos[i].quantidade * pedido.produtos[i].precoVenda %></span>
+										<!-- <span class="d-none hiddenPrice"><%= pedido.produtos[i].quantidade * pedido.produtos[i].precoVenda %></span> -->
 									</div>
 									<% } %>
 								<% } %>
@@ -126,7 +131,7 @@
 					</div>
 				</div>
 				<div class="totals my-2">
-					<p class="lead float-right">Valor total: <span class="valorTotal"></span></p>
+					<p class="lead float-right">Valor total: <span class="valorTotal">R$ <%= total %></span></p>
 					
 				</div>
 			</div>
@@ -218,7 +223,7 @@
 					</div>
 					
 				<div class="totals my-2">
-					<p class="lead float-right">Valor total: <span class="valorTotal"></span></p>
+					<p class="lead float-right">Valor total: <span class="valorTotal">R$ <%= total %></span></p>
 				</div>
 				</div>
 		  </div>
@@ -237,7 +242,7 @@
 					</div>
 				</div>
 				<div class="totals my-2">
-					<p class="lead float-right">Valor total: <span class="valorTotal"></span></p>
+					<p class="lead float-right">Valor total: <span class="valorTotal">R$ <%= total %></span></p>
 				</div>
 		  </div>
 		</div>
@@ -259,7 +264,7 @@
 		</div>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 						var precos = document.querySelectorAll('.hiddenPrice');
 						var total = 0;
 						console.log('total:' + total);
@@ -269,6 +274,6 @@
 						});
 						console.log(total);
 						document.querySelectorAll('.valorTotal').forEach(span => {span.innerHTML = 'R$ ' + total.toString().replace('.',',')});
-</script>
+</script> -->
 
 <% include ../partials/footer %>
