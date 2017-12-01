@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+
+<h2 class="text-center">Cadastrar novo segmento</h2>
+<div class="container">
+	<hr>
+	<form class="mt-5 row" action="/segmento/new" method="POST">
+		<div class="col-12">
+			<div class="my-2 w-75 ml-auto mr-auto">
+				<input type="text" name="segmento[nome]" class="form-control" placeholder="Nome" required>	
+			</div>
+		</div>
+		<div class="my-2 text-center ml-auto mr-auto">
+			<a href="/cliente" class="btn btn-success mr-3">Voltar</a>
+			<input type="submit" name="Enviar" value="Enviar" class="btn btn-warning ml-auto mr-auto">
+		</div>
+	</form>
+</div>
+
+<% include ../partials/footer %>

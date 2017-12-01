@@ -14,7 +14,7 @@
 #
 #
 #produtos
-#	categorias
+#	ok categorias
 #
 #
 #clientes

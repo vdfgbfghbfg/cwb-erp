@@ -8,34 +8,53 @@
 			<form class="" action="/produto/<%= produto._id %>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[nomeProduto]" placeholder="Nome do produto" value="<%= produto.nomeProduto %>" required />
+						<h3 class="text-center mb-4">Dados do produto</h3>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Nome do produto: </span>
+						  <input class="form-control" type="text" name="produto[nomeProduto]" placeholder="Nome do produto" value="<%= produto.nomeProduto %>" required />
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">SKU: </span>
+						  <input class="form-control" type="text" name="produto[sku]" placeholder="SKU" value="<%= produto.sku %>" required />
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Preço de venda: </span>
+						  <span class="input-group-addon">R$</span>
+						  <input class="form-control" type="text" name="produto[precoVenda]" placeholder="Preço de venda" value="<%= produto.precoVenda %>" required />
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Preço de custo: </span>
+						  <span class="input-group-addon">R$</span>
+						  <input class="form-control" type="text" name="produto[precoCusto]" placeholder="Preço de custo" value="<%= produto.precoCusto %>" />
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Quantidade disponível em estoque: </span>
+						  <input class="form-control" type="number" name="produto[quantidade]" placeholder="Quantidade disponível" value="<%= produto.quantidade %>" required />
+						  <span class="input-group-addon">un<span>
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Peso estimado: </span>
+						  <input class="form-control" type="text" name="produto[peso]" placeholder="Peso estimado" value="<%= produto.peso %>" />
+						  <span class="input-group-addon">kg</span>
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Imagem do produto: </span>
+						  <input class="form-control" type="file" name="img" placeholder="Imagem do produto" />
+						</div>
 					</div>
 					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[sku]" placeholder="SKU" value="<%= produto.sku %>" required />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[precoVenda]" placeholder="Preço de venda" value="<%= produto.precoVenda %>" required />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[precoCusto]" placeholder="Preço de custo" value="<%= produto.precoCusto %>" />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="number" name="produto[quantidade]" placeholder="Quantidade disponível" value="<%= produto.quantidade %>" required />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[peso]" placeholder="Peso estimado" value="<%= produto.peso %>" />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="file" name="img" placeholder="URL de imagem do produto" />
-					</div>
-					<div class='col-6 categoriaDiv'>
-							<button class="btn btn-info categoriaBtn mt-2">Quero alterar a categoria</button>
-					</div>
-					<script type="text/javascript">
-						document.querySelector('.categoriaBtn').addEventListener('click', () => {
-							document.querySelector('.categoriaDiv').innerHTML = "<select name='produto[categoria]' class='form-control my-2'><option>Selecione a categoria</option><option>Categoria 1</option><option>Categoria 2</option><option>Categoria 3</option></select>";
-						});
-					</script>
+					
+						<h3 class="text-center mb-4">Categorias</h3>
+						<% categorias.forEach(categoria => { %>
+						    <div class="input-group my-2">
+						      <span class="input-group-addon">
+						        <input type="checkbox" name="produto[categorias]" value="<%= categoria._id %>">
+						      </span>
+						      <span class="input-group-addon" style="background: white"><%= categoria.nome %></span>
+						    </div>
+						<% }) %>
+					
+				</div>
 				</div>
 				<div class="text-center">
 					<a href="/produto/<%= produto._id %>" class="btn btn-success mr-3">Voltar</a>

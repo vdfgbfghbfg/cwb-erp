@@ -6,12 +6,19 @@
 	<div class="row">
 		<% produtos.forEach(produto => { %>
 		<div class="col-12">
-			<div class="clientes-view row">
+			<div class="clientes-view row align-items-center">
 				<div class="col-12 col-sm-4 d-inline"><p class="truncate"><span class="attr">Nome: </span> <%= produto.nomeProduto %></p></div>
 				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">SKU: </span> <%= produto.sku %></p></div>
-				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">Em estoque: </span> <%= produto.quantidade %></p></div>
-				<div class="col-12 col-sm-2 d-inline text-center" style="">
-					<a class="btn btn-warning" href="/produto/<%= produto._id %>">Ver produto</a>
+				<div class="col-12 col-sm-2 d-inline"><p class="truncate"><span class="attr">Em estoque: </span> <%= produto.quantidade %></p></div>
+				<div class="col-12 col-sm-3 d-inline text-right">
+					<a class="btn btn-warning" href="/produto/<%= produto._id %>" data-toggle="tooltip" data-placement="top" title="Ver produto"><i class="fa fa-eye"  style="font-size: 1.7em"></i></a>
+					<a href="/produto/<%= produto._id %>/edit" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar produto"><i class="fa fa-pencil-square-o"  style="font-size: 1.7em;top: 1px;position: relative;"></i></a>
+					<form class="d-inline m-0" action="/produto/<%= produto._id %>?_method=DELETE" method="post">
+						<label class="m-0 btn btn-warning" data-toggle="tooltip" data-placement="top" title="Deletar produto">
+							<i class="fa fa-close" style="font-size: 1.7em"></i>
+							<input class="btn btn-warning d-none" type="submit" name="Deletar produto" value="Deletar produto" style="cursor: pointer">	
+						</label>
+					</form>
 				</div>
 			</div>
 		</div>

@@ -5,36 +5,55 @@
 	<div class="row">
 		<div class="col mt-4 container">
 			<form class="" action="/produto/new" method="post" enctype="multipart/form-data">
-				<div class="row">
+<div class="row">
 					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[nomeProduto]" placeholder="Nome do produto"  required />
+						<h3 class="text-center mb-4">Dados do produto</h3>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Nome do produto: </span>
+						  <input class="form-control" type="text" name="produto[nomeProduto]" placeholder="Nome do produto" required />
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">SKU: </span>
+						  <input class="form-control" type="text" name="produto[sku]" placeholder="SKU" required />
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Preço de venda: </span>
+						  <span class="input-group-addon">R$</span>
+						  <input class="form-control" type="text" name="produto[precoVenda]" placeholder="Preço de venda" required />
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Preço de custo: </span>
+						  <span class="input-group-addon">R$</span>
+						  <input class="form-control" type="text" name="produto[precoCusto]" placeholder="Preço de custo" />
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Quantidade disponível em estoque: </span>
+						  <input class="form-control" type="number" name="produto[quantidade]" placeholder="Quantidade disponível" required />
+						  <span class="input-group-addon">un<span>
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Peso estimado: </span>
+						  <input class="form-control" type="text" name="produto[peso]" placeholder="Peso estimado"  />
+						  <span class="input-group-addon">kg</span>
+						</div>
+						<div class="input-group my-2">
+						  <span class="input-group-addon">Imagem do produto: </span>
+						  <input class="form-control" type="file" name="img" placeholder="Imagem do produto" />
+						</div>
 					</div>
 					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[sku]" placeholder="SKU"  required />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[precoVenda]" placeholder="Preço de venda"  required />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[precoCusto]" placeholder="Preço de custo"  />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[quantidade]" placeholder="Quantidade disponível"  required />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="text" name="produto[peso]" placeholder="Peso estimado"  />
-					</div>
-					<div class="col-6">
-						<input class="form-control my-2" type="file" name="img" placeholder="URL de imagem do produto" />
-					</div>
-					<div class="col-6">
-						<select name="produto[categoria]" class="form-control my-2">
-							<option>Selecione a categoria</option>
-							<option>Categoria 1</option>
-							<option>Categoria 2</option>
-							<option>Categoria 3</option>
-						</select>
-					</div>
+					
+						<h3 class="text-center mb-4">Categorias</h3>
+						<% categorias.forEach(categoria => { %>
+						    <div class="input-group my-2">
+						      <span class="input-group-addon">
+						        <input type="checkbox" name="produto[categorias]" value="<%= categoria._id %>">
+						      </span>
+						      <span class="input-group-addon" style="background: white"><%= categoria.nome %></span>
+						    </div>
+						<% }) %>
+					
+				</div>
 				</div>
 				<div class="text-center">
 					<a href="/produto" class="btn btn-success mr-3">Voltar</a>

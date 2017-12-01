@@ -7,12 +7,12 @@ autoIncrement.initialize(connection);
 
 var clienteSchema = new mongoose.Schema({
 	clienteId: Number,
-	nome: {type: String, required: true},
+	nome: {type: String},
 	sobrenome: {type: String},
 	telefone: {type: String},
 	celular: {type: String},
 	cpfcnpj: {type: String},
-	email: {type: String, unique: true, required: true},
+	email: {type: String, unique: true},
 	grupoCliente: {type: String},
 	cep:{type: String},
 	rua:{type: String},
@@ -21,6 +21,11 @@ var clienteSchema = new mongoose.Schema({
 	bairro:{type: String},
 	cidade:{type: String},
 	estado:{type: String},
+	segmento: 
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Segmento"	
+		},
 	pedidos: [
 		{
 			type: mongoose.Schema.Types.ObjectId,

@@ -14,7 +14,13 @@ var produtoSchema = new mongoose.Schema({
 	precoVenda: String,
 	precoCusto: String,
 	img: Object,
-	categoria: String
+	categoria: String,
+	categorias: [
+		{
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Categoria"
+		}
+	]
 });
 
 produtoSchema.plugin(autoIncrement.plugin, { model: 'Produto', field: 'produtoId' });

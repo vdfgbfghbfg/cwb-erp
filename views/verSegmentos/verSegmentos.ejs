@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+
+<h2 class="text-center">Todos os segmentos</h2>
+<p class="qtdeprods">Quantidade de segmentos cadastradas: <%= segmentos.length %></p>
+<div class="container">
+	<hr>
+	<div class="row">
+		<% segmentos.forEach(segmento => { %>
+		<div class="col-12">
+			<div class="clientes-view row align-items-center">
+				<div class="col-12 col-sm-4 d-inline"><p class="truncate"><span class="attr">Nome: </span> <%= segmento.nome %></p></div>
+				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">Qtde. de clientes: </span> <%= segmento.clientesQtde %></p></div>
+				<div class="col-12 col-sm-2 d-inline"><p class="truncate"><span class="attr">ID: </span> <%= segmento.segmentoId %></p></div>
+				<div class="col-12 col-sm-3 d-inline text-right">
+					<a class="btn btn-warning" href="/segmento/<%= segmento._id %>" data-toggle="tooltip" data-placement="top" title="Ver clientes do segmento"><i class="fa fa-eye"  style="font-size: 1.7em"></i></a>
+					<a href="/segmento/<%= segmento._id %>/edit" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar segmento"><i class="fa fa-pencil-square-o"  style="font-size: 1.7em;top: 1px;position: relative;"></i></a>
+					<form class="d-inline m-0" action="/segmento/<%= segmento._id %>?_method=DELETE" method="post">
+						<label class="m-0 btn btn-warning" data-toggle="tooltip" data-placement="top" title="Deletar segmento">
+							<i class="fa fa-close" style="font-size: 1.7em"></i>
+							<input class="btn btn-warning d-none" type="submit" name="Deletar segmento" value="Deletar segmento" style="cursor: pointer">	
+						</label>
+					</form>
+				</div>
+			</div>
+		</div>
+		<% }); %>
+	</div>
+</div>
+
+<% include ../partials/footer %>

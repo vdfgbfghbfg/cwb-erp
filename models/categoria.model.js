@@ -11,12 +11,8 @@ var categoriaSchema = new mongoose.Schema({
 	nome: String,
 	descricao: String,
 	img: Object,
-	produtos: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Produto"
-		}
-	]
+	produtos: Array,
+	produtosQtde: Number
 });
 
 categoriaSchema.plugin(autoIncrement.plugin, { model: 'Categoria', field: 'categoriaId' });
