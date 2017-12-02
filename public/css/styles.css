@@ -141,6 +141,7 @@ a{
     top: 125px;
     border-radius: 0px 0px 10px 10px;
     filter: drop-shadow(0px 2px 1px rgba(0, 0, 0,0.2));
+    z-index: 989;
 }
 input.form-control, .input-group .form-control:hover {
     z-index: 0 !important;

@@ -18,7 +18,7 @@
 #
 #
 #clientes
-#	segmentos
+#	ok segmentos
 #
 #
 #dashboard
@@ -26,3 +26,4 @@
 #configurações
 #autenticação/login
 #método pgto
+#nota fiscal

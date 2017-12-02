@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 <h2 class="text-center">Editando cliente <%= cliente.nome + ' ' + cliente.sobrenome %></h2>
-<p class="qtdeprods">ID do cliente: <%= cliente._id %></p>
+<p class="qtdeprods">ID do cliente: <%= cliente.clienteId %></p>
 <div class="container">
 	<div class="row">
 		<div class="col-12">
@@ -9,55 +9,55 @@
 					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 						<h3 class="text-center mb-4 mt-2">Dados cadastrais</h3>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="email" name="cliente[email]" class="form-control" placeholder="Email" required>	
+							<input type="email" name="cliente[email]" class="form-control" placeholder="Email" value="<%= cliente.email %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[cpfcnpj]" class="form-control" placeholder="CPF/CNPJ" required>	
+							<input type="text" name="cliente[cpfcnpj]" class="form-control" placeholder="CPF/CNPJ" value="<%= cliente.cpfcnpj %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[nome]" class="form-control" placeholder="Nome" required>	
+							<input type="text" name="cliente[nome]" class="form-control" placeholder="Nome" value="<%= cliente.nome %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[sobrenome]" class="form-control" placeholder="Sobrenome" required>	
+							<input type="text" name="cliente[sobrenome]" class="form-control" placeholder="Sobrenome" value="<%= cliente.sobrenome %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[celular]" class="form-control" placeholder="Celular" required>	
+							<input type="text" name="cliente[celular]" class="form-control" placeholder="Celular" value="<%= cliente.celular %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[telefone]" class="form-control" placeholder="Telefone fixo" required>	
+							<input type="text" name="cliente[telefone]" class="form-control" placeholder="Telefone fixo" value="<%= cliente.telefone %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<select name="cliente[grupoCliente]" class="form-control" placeholder="Selecione o grupo de cliente" required>
-								<option>Selecione o grupo de cliente</option>
-								<option value="Segmento 1">Segmento 1</option>
-								<option value="Segmento 2">Segmento 2</option>
-								<option value="Segmento 3">Segmento 3</option>
+							<select name="cliente[segmento]" class="form-control" placeholder="Selecione o grupo de cliente" value="<%= cliente.segmento %>" required>
+								<option disabled selected class="d-none">Selecione o segmento</option>
+								<% segmentos.forEach(segmento=>{ %>
+									<option value="<%= segmento._id %>"><%= segmento.nome %></option>
+								<% }); %>
 							</select>
 						</div>
 					</div>
 					<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 						<h3 class="text-center mb-4 mt-2">Endereço</h3>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[cep]" class="form-control" placeholder="CEP" required>	
+							<input type="text" name="cliente[cep]" class="form-control" placeholder="CEP" value="<%= cliente.cep %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[rua]" class="form-control" placeholder="Rua" required>	
+							<input type="text" name="cliente[rua]" class="form-control" placeholder="Rua" value="<%= cliente.rua %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[numero]" class="form-control" placeholder="Número" required>	
+							<input type="text" name="cliente[numero]" class="form-control" placeholder="Número" value="<%= cliente.numero %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[complemento]" class="form-control" placeholder="Complemento">	
+							<input type="text" name="cliente[complemento]" class="form-control" placeholder="Complemento" value="<%= cliente.complemento %>">	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[bairro]" class="form-control" placeholder="Bairro">	
+							<input type="text" name="cliente[bairro]" class="form-control" placeholder="Bairro" value="<%= cliente.bairro %>">	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<input type="text" name="cliente[cidade]" class="form-control" placeholder="Cidade" required>	
+							<input type="text" name="cliente[cidade]" class="form-control" placeholder="Cidade" value="<%= cliente.cidade %>" required>	
 						</div>
 						<div class="my-2 w-75 ml-auto mr-auto">
-							<select name="cliente[estado]" class="form-control" placeholder="Estado" required>
-								<option value="Não selecionado">Selecione o estado</option>
+							<select name="cliente[estado]" class="form-control" placeholder="Estado" value="<%= cliente.estado %>" required>
+								<option disabled selected class="d-none">Selecione o estado</option>
 								<option value="AC">Acre</option>
 								<option value="AL">Alagoas</option>
 								<option value="AP">Amapá</option>
@@ -106,7 +106,14 @@
 								<div class="col-12"><span class="attr2 col-12">Sobrenome: <%= cliente.sobrenome %></span></div>
 								<div class="col-12"><span class="attr2 col-12">Celular: <%= cliente.celular %></span></div>
 								<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= cliente.telefone %></span></div>
-								<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
+								<div class="col-12">
+									<span class="attr2 col-12">
+									Segmento: 
+									<% cliente.segmento.forEach(segmento => { %>
+									 <span class="attr"><%= segmento.nome %></span>
+									<% }); %>
+									</span>
+								</div>
 							</div>
 							<div class="col-6">
 								<div class="col-12"><span class="attr2 col-12">CEP: <%= cliente.cep %></span></div>

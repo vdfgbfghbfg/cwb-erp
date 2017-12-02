@@ -24,11 +24,11 @@
 				<input type="text" name="telefone" class="form-control" placeholder="Telefone fixo" required>	
 			</div>
 			<div class="my-2 w-75 ml-auto mr-auto">
-				<select name="grupoCliente" class="form-control" placeholder="Selecione o grupo de cliente" required>
-					<option>Selecione o grupo de cliente</option>
-					<option value="Segmento 1">Segmento 1</option>
-					<option value="Segmento 2">Segmento 2</option>
-					<option value="Segmento 3">Segmento 3</option>
+				<select name="segmento" class="form-control" placeholder="Selecione o grupo de cliente" required>
+					<option disabled selected class="d-none">Selecione o segmento</option>
+					<% segmentos.forEach(segmento=>{ %>
+						<option value="<%= segmento._id %>"><%= segmento.nome %></option>
+					<% }); %>
 				</select>
 			</div>
 		</div>

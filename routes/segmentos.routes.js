@@ -19,10 +19,10 @@ router.get('/segmento', (req,res)=>{
 		}
 		else{
 			segmentos.forEach(segmento => {
-				Cliente.find({segmentos: { $all: [ segmento._id ]}} ,(error,clientes)=>{
+				Cliente.find({segmento: { $all: [ segmento._id ]}} ,(error,clientes)=>{
 					segmento.clientes = [];
 					segmento.clientes.push(clientes);
-					segmento.produtosQtde = clientes.length;
+					segmento.clientesQtde = clientes.length;
 					segmento.save((error,segmento)=>{
 						if(error){console.log(error)}
 					});

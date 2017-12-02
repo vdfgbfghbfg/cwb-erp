@@ -13,7 +13,17 @@
 					<div class="col-12"><span class="attr2 col-12">Sobrenome: <%= cliente.sobrenome %></span></div>
 					<div class="col-12"><span class="attr2 col-12">Celular: <%= cliente.celular %></span></div>
 					<div class="col-12"><span class="attr2 col-12">Telefone fixo: <%= cliente.telefone %></span></div>
-					<div class="col-12"><span class="attr2 col-12">Grupo de cliente: <%= cliente.grupoCliente %></span></div>
+					<div class="col-12">
+						<span class="attr2 col-12">
+						Segmento: 
+						<% cliente.segmento.forEach(segmento => { %>
+						 <span class="attr"><%= segmento.nome %></span>
+						<% }); %>
+						<% if (cliente.segmento.length === 0) { %>
+							Nenhum
+						<% } %>
+						</span>
+					</div>
 				</div>
 				<div class="col-6">
 					<div class="col-12"><span class="attr2 col-12">CEP: <%= cliente.cep %></span></div>
@@ -26,13 +36,7 @@
 						<div class="col-6"><span class="attr2 w-100">Estado: <%= cliente.estado %></span></div>	
 					</div>
 				</div>
-					<div class="col-12 d-inline-block mt-3 text-center">
-						<a href="/cliente/" class="btn btn-success mr-3">Voltar</a>
-						<a href="/cliente/<%= cliente._id %>/edit" class="btn btn-warning mr-3">Editar cliente</a>
-						<form action="/cliente/<%= cliente._id %>?_method=DELETE" method="post" class="d-inline">
-							<input class="btn btn-warning" type="submit" name="Deletar cliente" value="Deletar cliente">
-						</form>	
-					</div>
+					
 			</div>
 			<div class="col-12">
 				<% if (cliente.pedidos.length != 0) { %>
@@ -63,6 +67,13 @@
 			<p class="text-center text-muted">Este cliente ainda não tem nenhum pedido.</p>
 			<% } %>
 		</div>
+		<div class="col-12 d-inline-block mt-3 text-center">
+						<a href="/cliente/" class="btn btn-success mr-3">Voltar</a>
+						<a href="/cliente/<%= cliente._id %>/edit" class="btn btn-warning mr-3">Editar cliente</a>
+						<form action="/cliente/<%= cliente._id %>?_method=DELETE" method="post" class="d-inline">
+							<input class="btn btn-warning" type="submit" name="Deletar cliente" value="Deletar cliente">
+						</form>	
+					</div>
 	</div>
 </div>
 

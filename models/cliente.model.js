@@ -21,11 +21,12 @@ var clienteSchema = new mongoose.Schema({
 	bairro:{type: String},
 	cidade:{type: String},
 	estado:{type: String},
-	segmento: 
+	segmento: [
 		{
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Segmento"	
-		},
+		}
+	],
 	pedidos: [
 		{
 			type: mongoose.Schema.Types.ObjectId,

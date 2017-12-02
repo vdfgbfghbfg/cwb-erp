@@ -4,6 +4,7 @@ var expressSanitized = require("express-sanitized");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var Cliente = require('./../models/cliente.model');
+var Segmento = require('./../models/segmento.model');
 
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
@@ -11,7 +12,14 @@ router.use(expressSanitized());
 router.use(methodOverride("_method"));
 
 router.get('/cliente/new', (req,res) => {
-	res.render('novoCliente/novoCliente');
+	Segmento.find((error,segmentos)=>{
+		if(error){
+			console.log(`Whoopsie. Erro: ${error}`);
+		} else {
+			console.log(segmentos);
+			res.render('novoCliente/novoCliente', {segmentos:segmentos});
+		}
+	});
 });
 router.get('/cliente', (req,res) => {
 	var clientes = {};
@@ -24,20 +32,25 @@ router.get('/cliente', (req,res) => {
 	})
 });
 router.get('/cliente/:id', (req,res) => {
-	Cliente.findById(req.params.id).populate("pedidos").exec((error, cliente) => {
+	Cliente.findById(req.params.id).populate("pedidos segmento").exec((error, cliente) => {
 		if(error){
 			console.log(`Whoopsie. Erro: ${error}`);
 		} else {
-			console.log(cliente.pedido);
-			res.render('verCliente/verCliente', {cliente: cliente});
+			Segmento.find({segmentos: { $all: [ cliente.segmento._id ]}}, (error,segmento)=>{
+				console.log(cliente.segmento);
+				res.render('verCliente/verCliente', {cliente: cliente, segmento: segmento});
+			})
 		}
 	})
 });
 router.get('/cliente/:id/edit', (req,res) => {
-	Cliente.findById(req.params.id, (error, cliente) => {
+	Cliente.findById(req.params.id).populate("segmento").exec((error, cliente) => {
 		if(error){res.render('error/error', {error:error})}
 		else{
-			res.render('editarCliente/editarCliente', {cliente: cliente})
+			Segmento.find((error,segmento)=>{
+				
+				res.render('editarCliente/editarCliente', {cliente: cliente, segmentos:segmento})
+			});
 		}
 	})
 });
@@ -56,7 +69,8 @@ router.post('/cliente/new', (req,res) => {
 		complemento: req.body.complemento,
 		bairro: req.body.bairro,
 		cidade: req.body.cidade,
-		estado: req.body.estado
+		estado: req.body.estado,
+		segmento: req.body.segmento
 	};
 	Cliente.create(novoCliente, (error,cliente) => {
 		if(error){
