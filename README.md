@@ -1,45 +1,28 @@
-#
-#
-# A fazer:
-#
-#
-# pedido
-#	ok preço dos produtos
-#	ok valor total
-#	ok forma de pgto
-#	ok formas de envio
-#	ok status do pedido
-#	ok data separada em dia, mês, e ano
-#	ok id unico pedido
-#
-#
-#produtos
-#	ok categorias
-#
-#
-#clientes
-#	ok segmento
+###deo, um ERP online
+
+ERP construído em Node.js, Express e MongoDB. Para templates, foi utilizado EJS.
+
+####Instalação
+
+1. git clone https://este.repositorio
+2. npm install
+3. node app.js
 
 
-#dashboard
+####Dependências do projeto:
 
-##pedidos
-###quantidade de pedidos
-###status dos pedidos
-###pedidos faturados
-###faturado x investido em produto x lucros
-
-##clientes
-###quantidade de clientes
-###clientes x segmentos
-###clientes com pedido em aberto
-
-##produtos
-###quantidade de produtos
-###produtos mais vendidos
-
-#relatorios
-#configurações
-#autenticação/login
-#método pgto
-#nota fiscal
+    "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0-beta.2",
+    "chart.js": "^2.7.1",
+    "ejs": "^2.5.7",
+    "ejs-html": "^4.0.3",
+    "express": "^4.16.2",
+    "express-sanitized": "^0.5.1",
+    "fs": "0.0.1-security",
+    "fs-extra": "^4.0.2",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.13.5",
+    "mongoose-auto-increment": "^5.0.1",
+    "multer": "^1.3.0",
+    "path": "^0.12.7",
+    "underscore": "^1.8.3"
