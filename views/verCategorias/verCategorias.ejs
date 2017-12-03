@@ -1,19 +1,19 @@
 <% include ../partials/header %>
 
-<h2 class="text-center">Todas as categorias</h2>
-<p class="qtdeprods">Quantidade de categorias cadastradas: <%= categorias.length %></p>
+<h2 class="text-center mt-5 mt-sm-3">Todas as categorias</h2>
+<p class="qtdeprods d-none d-md-block">Quantidade de categorias cadastradas: <%= categorias.length %></p>
 <div class="container">
 	<hr>
 	<div class="row">
 		<% categorias.forEach(categoria => { %>
 		<div class="col-12">
 			<div class="clientes-view row align-items-center">
-				<div class="col-12 col-sm-4 d-inline"><p class="truncate"><span class="attr">Nome: </span> <%= categoria.nome %></p></div>
-				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">Qtde. de produtos: </span> <%= categoria.produtosQtde %></p></div>
-				<div class="col-12 col-sm-2 d-inline"><p class="truncate"><span class="attr">ID: </span> <%= categoria.categoriaId %></p></div>
-				<div class="col-12 col-sm-3 d-inline text-right">
+				<div class="col-12 col-sm-6 col-lg-4 d-inline"><p class="truncate"><span class="attr">Nome: </span> <%= categoria.nome %></p></div>
+				<div class="col-12 col-sm-6 col-lg-3 d-inline"><p class="truncate"><span class="attr">Qtde. de produtos: </span> <%= categoria.produtosQtde %></p></div>
+				<div class="col-12 col-sm-6 col-lg-2 d-inline"><p class="truncate"><span class="attr">ID: </span> <%= categoria.categoriaId %></p></div>
+				<div class="col-12 col-sm-6 col-lg-3 d-inline  text-center text-sm-left text-lg-right">
 					<a class="btn btn-warning" href="/categoria/<%= categoria._id %>" data-toggle="tooltip" data-placement="top" title="Ver produtos da categoria"><i class="fa fa-eye"  style="font-size: 1.7em"></i></a>
-					<a href="/categoria/<%= categoria._id %>/edit" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar categoria"><i class="fa fa-pencil-square-o"  style="font-size: 1.7em;top: 1px;position: relative;"></i></a>
+					<a href="/categoria/<%= categoria._id %>/edit" class="btn btn-warning d-none" data-toggle="tooltip" data-placement="top" title="Editar categoria"><i class="fa fa-pencil-square-o"  style="font-size: 1.7em;top: 1px;position: relative;"></i></a>
 					<form class="d-inline m-0" action="/categoria/<%= categoria._id %>?_method=DELETE" method="post">
 						<label class="m-0 btn btn-warning" data-toggle="tooltip" data-placement="top" title="Deletar categoria">
 							<i class="fa fa-close" style="font-size: 1.7em"></i>

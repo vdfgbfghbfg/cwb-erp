@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<h2 class="text-center">Clientes do segmento <%= segmento.nome %></h2>
+<h2 class="text-center mt-5 mt-sm-3">Clientes do segmento <%= segmento.nome %></h2>
 <div class="container">
 	<hr>
 	<div class="row">
@@ -9,7 +9,7 @@
 			<div class="clientes-view row align-items-center">
 				<div class="col-12 col-sm-5 d-inline"><p class="truncate"><span class="attr">Nome: </span> <%= cliente.nome + " " + cliente.sobrenome %></p></div>
 				<div class="col-12 col-sm-4 d-inline"><p class="truncate"><span class="attr">Email: </span> <%= cliente.email %></p></div>
-				<div class="col-12 col-sm-3 d-inline text-right">
+				<div class="col-12 col-sm-3 d-inline  text-center text-sm-left text-lg-right">
 					<a class="btn btn-warning" href="/cliente/<%= cliente._id %>" data-toggle="tooltip" data-placement="top" title="Ver cliente"><i class="fa fa-eye"  style="font-size: 1.7em"></i></a>
 					<a href="/cliente/<%= cliente._id %>/edit" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar cliente"><i class="fa fa-pencil-square-o"  style="font-size: 1.7em;top: 1px;position: relative;"></i></a>
 					<form class="d-inline m-0" action="/cliente/<%= cliente._id %>?_method=DELETE" method="post">

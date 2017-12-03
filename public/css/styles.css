@@ -139,7 +139,7 @@ a{
 .pedidostab{
     background: #f8f9fa;
     top: 125px;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 10px;
     filter: drop-shadow(0px 2px 1px rgba(0, 0, 0,0.2));
     z-index: 989;
 }

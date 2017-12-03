@@ -1,6 +1,6 @@
 <% include ../partials/header %>
-<h2 class="text-center">Editando cliente <%= cliente.nome + ' ' + cliente.sobrenome %></h2>
-<p class="qtdeprods">ID do cliente: <%= cliente.clienteId %></p>
+<h2 class="text-center mt-5 mt-sm-3">Editando cliente <%= cliente.nome + ' ' + cliente.sobrenome %></h2>
+<p class="qtdeprods d-none d-md-block">ID do cliente: <%= cliente.clienteId %></p>
 <div class="container">
 	<div class="row">
 		<div class="col-12">
@@ -99,7 +99,7 @@
 					<div class="col-12">
 						<div class="clientes-view row py-4">
 							<h3 class="text-center mb-4 col-12">Dados atuais</h3>
-							<div class="col-6">
+							<div class="col-12 col-sm-6">
 								<div class="col-12"><span class="attr2 col-12">Email: <%= cliente.email %></span></div>
 								<div class="col-12"><span class="attr2 col-12">CPF/CNPJ: <%= cliente.cpfcnpj %></span></div>
 								<div class="col-12"><span class="attr2 col-12">Nome: <%= cliente.nome %></span></div>
@@ -115,7 +115,7 @@
 									</span>
 								</div>
 							</div>
-							<div class="col-6">
+							<div class="col-12 col-sm-6">
 								<div class="col-12"><span class="attr2 col-12">CEP: <%= cliente.cep %></span></div>
 								<div class="col-12"><span class="attr2 col-12">Rua: <%= cliente.rua %></span></div>
 								<div class="col-12"><span class="attr2 col-12">Número: <%= cliente.numero %></span></div>

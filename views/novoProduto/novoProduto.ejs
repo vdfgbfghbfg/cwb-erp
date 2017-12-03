@@ -1,12 +1,12 @@
 <% include ../partials/header %>
-<h2 class="text-center">Cadastrar novo produto</h2>
+<h2 class="text-center mt-5 mt-sm-3">Cadastrar novo produto</h2>
 <div class="container">
 	<hr>
 	<div class="row">
 		<div class="col mt-4 container">
 			<form class="" action="/produto/new" method="post" enctype="multipart/form-data">
 <div class="row">
-					<div class="col-6">
+					<div class="col-12 col-md-6">
 						<h3 class="text-center mb-4">Dados do produto</h3>
 						<div class="input-group my-2">
 						  <span class="input-group-addon">Nome do produto: </span>
@@ -27,8 +27,8 @@
 						  <input class="form-control" type="text" name="produto[precoCusto]" placeholder="Preço de custo" />
 						</div>
 						<div class="input-group my-2">
-						  <span class="input-group-addon">Quantidade disponível em estoque: </span>
-						  <input class="form-control" type="number" name="produto[quantidade]" placeholder="Quantidade disponível" required />
+						  <span class="input-group-addon">Em estoque: </span>
+						  <input class="form-control" type="number" name="produto[quantidade]" placeholder="Quantidade" required />
 						  <span class="input-group-addon">un<span>
 						</div>
 						<div class="input-group my-2">
@@ -41,7 +41,7 @@
 						  <input class="form-control" type="file" name="img" placeholder="Imagem do produto" />
 						</div>
 					</div>
-					<div class="col-6">
+					<div class="col-12 col-md-6">
 					
 						<h3 class="text-center mb-4">Categorias</h3>
 						<% categorias.forEach(categoria => { %>

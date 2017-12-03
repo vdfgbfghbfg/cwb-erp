@@ -1,12 +1,12 @@
 <% include ../partials/header %>
-<h2 class="text-center">Produto <%= produto.nomeProduto %></h2>
-<p class="qtdeprods">ID do produto: <%= produto.produtoId %></p>
+<h2 class="text-center mt-5 mt-sm-3">Produto <%= produto.nomeProduto %></h2>
+<p class="qtdeprods d-none d-md-block">ID do produto: <%= produto.produtoId %></p>
 <div class="container">
 	<hr>
 	<div class="row">
 		<div class="col-12">
 			<div class="clientes-view row py-4">
-				<div class="col-6">
+				<div class="col-md-6 col-12">
 					<div class="col-12"><span class="attr2 col-12">Nome do produto: <%= produto.nomeProduto %></span></div>
 					<div class="col-12"><span class="attr2 col-12">SKU: <%= produto.sku %></span></div>
 					<div class="col-12">
@@ -22,18 +22,28 @@
 					<div class="col-12"><span class="attr2 col-12">Quantidade em estoque: <%= produto.quantidade %> unidades</span></div>
 					<div class="col-12"><span class="attr2 col-12">Peso estimado: <%= produto.peso %> kg</span></div>
 				</div>
-				<div class="col-6">
+				<div class="col-md-6 col-12">
 					<div class="col-12 text-center">
 						<img class="img-fluid ml-auto mr-auto img-thumbnail" src="<%= produto.img.caminho %>"></img>
 					</div>
 				</div>
-				<div class="col-12 d-inline-block text-center mt-3" style="">
-					<a href="/produto/" class="btn btn-success mr-3">Voltar</a>
-					<a href="/produto/<%= produto._id %>/edit" class="btn btn-warning mr-3">Editar produto</a>
-					<form class="d-inline" action="/produto/<%= produto._id %>?_method=DELETE" method="post">
-						<input class="btn btn-warning" type="submit" name="Deletar produto" value="Deletar produto" style="cursor: pointer">
-					</form>
+				<div class="container">
+					<div class="row text-center mt-3" style="">
+						<div class="col-12 col-md-4 my-2 my-md-0">
+							<a href="/produto/" class="btn btn-success">Voltar</a>
+						</div>
+						<div class="col-12 col-md-4 my-2 my-md-0">
+							<a href="/produto/<%= produto._id %>/edit" class="btn btn-warning">Editar produto</a>
+						</div>
+						<div class="col-12 col-md-4 my-2 my-md-0">
+							<form class="d-inline" action="/produto/<%= produto._id %>?_method=DELETE" method="post">
+								<input class="btn btn-warning" type="submit" name="Deletar produto" value="Deletar produto" style="cursor: pointer">
+							</form>
+						</div>
+					</div>
 				</div>
+			</div>
+
 			</div>
 		</div>
 	</div>

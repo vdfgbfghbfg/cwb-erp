@@ -1,11 +1,11 @@
 <% include ../partials/header %>
 
-<h2 class="text-center">Pedido <%= pedido.pedidoId2 %></h2>
+<h2 class="text-center mt-5 mt-sm-3">Pedido <%= pedido.pedidoId2 %></h2>
 
 <div class="container">
 <div class="row mt-4">
 	<div class="col-12">
-		<ul class="nav nav-pills sticky-top pedidostab pt-3 pb-3 px-3 justify-content-between" id="myTab" role="tablist">
+		<ul class="nav nav-pills pedidostab pt-3 pb-3 px-3 justify-content-center" id="myTab" role="tablist">
 		  <li class="nav-item">
 		    <a class="nav-link active" id="visaoGeral-tab" data-toggle="tab" href="#visaoGeral" role="tab" aria-controls="visaoGeral" aria-selected="true">Visão geral</a>
 		  </li>
@@ -65,19 +65,19 @@
 		  	<div class="col-12">
 		  				<div class="produtos">
 							<p class="lead text-center">Produtos do pedido</p>
-							<div class="p-2 produtospedido">
+							<div class="p-2 produtospedido text-center text-md-left">
 								<% for (var i = 0; i < pedido.produtos.length; i++) { %>
 									<% if (pedido.produtos[i]._id) { %>
 									<div class="row produtospedido m-2 mx-0">
-										<div class="col-5">
+										<div class="col-md-5 col-12">
 											<p class="truncate">
 												<a data-toggle="tooltip" data-placement="top" title="Ver produto" style="text-decoration: underline !important;" class="px-1" href="/produto/<%= pedido.produtos[i].idOficial %>"><i class="fa fa-search"></i></a> <%= pedido.produtos[i]._id %>
 											</p>
 										</div>
-										<div class="col-4">
+										<div class="col-md-4 col-12">
 											Preço: R$ <span class="precoVenda"><%= pedido.produtos[i].precoVenda %></span>
 										</div>
-										<div class="col-3">
+										<div class="col-md-3 col-12">
 											Qtde: <%= pedido.produtos[i].quantidade %>
 										</div>
 										<!-- <span class="d-none hiddenPrice"><%= pedido.produtos[i].quantidade * pedido.produtos[i].precoVenda %></span> -->
@@ -98,7 +98,7 @@
 											Alterar status:
 										</p>
 										<form class="d-inline" method="post" action="/pedido/<%= pedido._id %>/edit?_method=put">
-											<div class="input-group w-50 m-3 d-inline-flex z-index-0">
+											<div class="input-group w-75 m-3 d-inline-flex z-index-0">
 												<select id="statusId2" name="pedido[status._id]" class="form-control" value="<%= pedido.status._id %>">
 													<option class="d-none" selected disabled>Selecione</option>
 													<option value="1">Iniciado</option>
@@ -192,7 +192,7 @@
 									Alterar status:
 								</p>
 								<form class="d-inline" method="post" action="/pedido/<%= pedido._id %>/edit?_method=put">
-									<div class="input-group w-50 m-3 d-inline-flex z-index-0">
+									<div class="input-group w-75 m-3 d-inline-flex z-index-0">
 										<select id="statusId" name="pedido[status._id]" class="form-control" value="<%= pedido.status._id %>">
 											<option class="d-none" selected disabled>Selecione</option>
 											<option value="1">Iniciado</option>
@@ -220,19 +220,19 @@
 		  <div class="tab-pane fade" id="produtos" role="tabpanel" aria-labelledby="produtos-tab">
 		  		<div class="produtos mt-4">
 					<p class="lead text-center d-none">Produtos do pedido</p>
-					<div class="p-2 produtospedido">
+					<div class="p-2 produtospedido text-center text-md-left">
 						<% for (var i = 0; i < pedido.produtos.length; i++) { %>
 							<% if (pedido.produtos[i]._id) { %>
 							<div class="row produtospedido m-2 mx-0">
-								<div class="col-5">
+								<div class="col-md-5 col-12">
 									<p class="truncate">
 										<a data-toggle="tooltip" data-placement="top" title="Ver produto" style="text-decoration: underline !important;" class="px-1" target="_blank" href="/produto/<%= pedido.produtos[i].idOficial %>"><i class="fa fa-search"></i></a> <%= pedido.produtos[i]._id %>
 									</p>
 								</div>
-								<div class="col-4">
+								<div class="col-md-4 col-12">
 									Preço: R$ <span class="precoVenda2"><%= pedido.produtos[i].precoVenda %></span>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-12">
 									Qtde: <%= pedido.produtos[i].quantidade %>
 								</div>
 							</div>
