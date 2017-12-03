@@ -26,7 +26,11 @@ Date.prototype.getMonthName = function() {
 var date = new Date;
 var monthName = date.getMonthName();
 
-router.get('/', (req,res) => {
+router.get('/',(req,res)=>{
+	res.render('home/home');
+});
+
+router.get('/dashboard', (req,res) => {
 	Pedido.find(/*{'data.mes.nome': monthName},*/(error,pedidos)=>{
 		if(error){
 			res.render('error/error', {error:error});
