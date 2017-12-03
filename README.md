@@ -2,6 +2,8 @@
 
 <p>ERP construído em Node.js, Express e MongoDB. Para templates, foi utilizado EJS.</p>
 
+<p>Projeto em desenvolvimento!</p>
+
 <h2>Instalação</h2>
 
 1. git clone https://github.com/mgcg12/cwb-erp
