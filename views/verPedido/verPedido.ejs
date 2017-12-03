@@ -1,9 +1,5 @@
 <% include ../partials/header %>
 
-<% var total = 0; %>
-<% pedido.produtos.forEach(produto => { %>
-	<% total += produto.precoVenda * produto.quantidade %>
-<% }); %>
 <h2 class="text-center">Pedido <%= pedido.pedidoId2 %></h2>
 
 <div class="container">
@@ -103,7 +99,8 @@
 										</p>
 										<form class="d-inline" method="post" action="/pedido/<%= pedido._id %>/edit?_method=put">
 											<div class="input-group w-50 m-3 d-inline-flex z-index-0">
-												<select id="statusId2" name="pedido[status._id]" class="form-control">
+												<select id="statusId2" name="pedido[status._id]" class="form-control" value="<%= pedido.status._id %>">
+													<option class="d-none" selected disabled>Selecione</option>
 													<option value="1">Iniciado</option>
 													<option value="2">Aguardando pagamento</option>
 													<option value="3">Processando</option>
@@ -141,7 +138,7 @@
 					</div>
 				</div>
 				<div class="totals my-2">
-					<p class="lead float-right">Valor total: <span class="valorTotal">R$ <%= total %></span></p>
+					<p class="lead float-right">Valor total: <span class="valorTotal">R$ <%= pedido.totalVenda %></span></p>
 					
 				</div>
 			</div>
@@ -196,7 +193,8 @@
 								</p>
 								<form class="d-inline" method="post" action="/pedido/<%= pedido._id %>/edit?_method=put">
 									<div class="input-group w-50 m-3 d-inline-flex z-index-0">
-										<select id="statusId" name="pedido[status._id]" class="form-control">
+										<select id="statusId" name="pedido[status._id]" class="form-control" value="<%= pedido.status._id %>">
+											<option class="d-none" selected disabled>Selecione</option>
 											<option value="1">Iniciado</option>
 											<option value="2">Aguardando pagamento</option>
 											<option value="3">Processando</option>
@@ -243,7 +241,7 @@
 					</div>
 					
 				<div class="totals my-2">
-					<p class="lead float-right">Valor total: <span class="valorTotal">R$ <%= total %></span></p>
+					<p class="lead float-right">Valor total: <span class="valorTotal">R$ <%= pedido.totalVenda %></span></p>
 				</div>
 				</div>
 		  </div>
@@ -262,7 +260,7 @@
 					</div>
 				</div>
 				<div class="totals my-2">
-					<p class="lead float-right">Valor total: <span class="valorTotal">R$ <%= total %></span></p>
+					<p class="lead float-right">Valor total: <span class="valorTotal">R$ <%= pedido.totalVenda %></span></p>
 				</div>
 		  </div>
 		</div>
@@ -284,16 +282,5 @@
 		</div>
 </div>
 
-<!-- <script type="text/javascript">
-						var precos = document.querySelectorAll('.hiddenPrice');
-						var total = 0;
-						console.log('total:' + total);
-						precos.forEach(produto => {
-							console.log(Number((produto.innerHTML).replace(',','.')));
-							total += Number((produto.innerHTML).replace(',','.'));
-						});
-						console.log(total);
-						document.querySelectorAll('.valorTotal').forEach(span => {span.innerHTML = 'R$ ' + total.toString().replace('.',',')});
-</script> -->
 
 <% include ../partials/footer %>

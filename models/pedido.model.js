@@ -7,7 +7,8 @@ autoIncrement.initialize(connection);
 
 
 var pedidoSchema = new mongoose.Schema({
-	total: Number,
+	totalVenda: Number,
+	totalCusto: Number,
 	pedidoId2: Number,
 	dataPedido: String,
 	data: {

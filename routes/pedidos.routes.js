@@ -72,6 +72,18 @@ router.get('/pedido/:id/edit',(req,res)=>{
 });
 router.post('/pedido/new', (req,res)=>{
 	req.body.pedido.produtos = req.body.produtos;
+	var totalVenda = 0;
+	req.body.pedido.produtos.forEach(produto =>{
+		totalVenda += produto.quantidade * produto.precoVenda.replace(".","");
+	});
+	console.log(totalVenda);
+	req.body.pedido.totalVenda = totalVenda;
+	var totalCusto = 0;
+	req.body.pedido.produtos.forEach(produto =>{
+		totalCusto += produto.quantidade * produto.precoCusto.replace(".","");
+	});
+	console.log(totalCusto);
+	req.body.pedido.totalCusto = totalCusto;
 	Pedido.create(req.body.pedido, (error,pedido)=>{
 		if(error){
 			console.log(error);
@@ -99,6 +111,7 @@ router.post('/pedido/new', (req,res)=>{
 				}
 			})
 			/*console.log(pedido);*/
+
 			res.redirect('/pedido/' + pedido._id);
 
 		}
@@ -111,7 +124,7 @@ router.put('/pedido/:id/edit', (req,res)=>{
 			res.render('error/error', {error:error});
 		}
 		else {
-			console.log(`Pedido ${pedido.nomeProduto} atualilzado com sucesso`);
+			console.log(`Pedido ${pedido.pedidoId} atualizado com sucesso`);
 			res.redirect('/pedido/'+ pedido._id);
 		}
 	});

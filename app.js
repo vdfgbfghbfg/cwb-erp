@@ -40,6 +40,12 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride("_method"));
 
+app.get('/dog',(req,res)=>{
+
+
+
+})
+
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log('DEO online em localhost:', port)

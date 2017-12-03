@@ -18,10 +18,26 @@
 #
 #
 #clientes
-#	ok segmentos
-#
-#
+#	ok segmento
+
+
 #dashboard
+
+##pedidos
+###quantidade de pedidos
+###status dos pedidos
+###pedidos faturados
+###faturado x investido em produto x lucros
+
+##clientes
+###quantidade de clientes
+###clientes x segmentos
+###clientes com pedido em aberto
+
+##produtos
+###quantidade de produtos
+###produtos mais vendidos
+
 #relatorios
 #configurações
 #autenticação/login

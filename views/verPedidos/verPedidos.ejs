@@ -10,12 +10,13 @@
 			<div class="clientes-view row align-items-center">
 				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">Cliente: </span> <span><%= pedido.cliente.nome %></span></p></div>
 				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">Data: </span> <span><%= pedido.dataPedido %></span></p></div>
-				<div class="col-12 col-sm-3 d-inline"><p class="truncate"><span class="attr">Status: </span> <span><%= pedido.status.nome %></span></p></div>
+				<div class="col-12 col-sm-2 d-inline"><p class="truncate"><span class="attr">Status: </span> <span><%= pedido.status.nome %></span></p></div>
 				<div class="col-12 col-sm-1 d-inline"><p class="truncate"><span class="attr">ID: </span> <span><%= pedido.pedidoId2 %></span></p></div>
-				<div class="col-12 col-sm-2 d-inline text-right">
-					<a class="btn btn-warning" href="/pedido/<%= pedido._id %>" data-toggle="tooltip" data-placement="top" title="Ver pedido"><i class="fa fa-eye"  style="font-size: 1.7em"></i></a>
+				<div class="col-12 col-sm-2 d-inline"><p class="truncate"><span class="attr">Total: </span> <span>R$ <%= pedido.totalVenda %></span></p></div>
+				<div class="col-12 col-sm-1 d-inline text-right p-0">
+					<a class="btn-sm btn btn-warning" href="/pedido/<%= pedido._id %>" data-toggle="tooltip" data-placement="top" title="Ver pedido"><i class="fa fa-eye"  style="font-size: 1.7em"></i></a>
 					<form class="d-inline m-0" action="/pedido/<%= pedido._id %>?_method=DELETE" method="post">
-						<label class="m-0 btn btn-warning" data-toggle="tooltip" data-placement="top" title="Deletar pedido">
+						<label class="m-0 btn-sm btn btn-warning" data-toggle="tooltip" data-placement="top" title="Deletar pedido">
 							<i class="fa fa-close" style="font-size: 1.7em"></i>
 							<input class="btn btn-warning d-none" type="submit" name="Deletar pedido" value="Deletar pedido" style="cursor: pointer">	
 						</label>
