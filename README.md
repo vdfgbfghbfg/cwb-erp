@@ -1,15 +1,14 @@
-###deo, um ERP online
+<h1>deo, um ERP online</h1>
 
-ERP construído em Node.js, Express e MongoDB. Para templates, foi utilizado EJS.
+<p>ERP construído em Node.js, Express e MongoDB. Para templates, foi utilizado EJS.</p>
 
-####Instalação
+<h2>Instalação</h2>
 
 1. git clone https://este.repositorio
 2. npm install
 3. node app.js
 
-
-####Dependências do projeto:
+<h2>Dependências do projeto:</h2>
 
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-beta.2",
