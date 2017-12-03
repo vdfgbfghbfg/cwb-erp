@@ -3,11 +3,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<h2 class="h1 text-center my-4 mt-5 mt-sm-3">Pedidos</h2>
+			<h1 class="text-center my-4 mt-5 mt-sm-3 display-3" style="font-size: 2.5em !important"><i class="fa fa-bar-chart"></i><br />deo Dasboard</h1>
+		</div>
+		<div class="col-12">
+			<h2 class="h2 text-center my-4 mt-sm-3">Pedidos</h2>
 		</div>
 		<div class="col-12 col-lg-6 mt-2 mt-md-4">
 			<h3 class="display-3 text-center" style="font-size: 1.8em !important">Informações importantes</h3>
-			<div class="row dashboard-pedido p-2 my-3 mt-4 mx-1">
+			<div class="row dashboard-pedido p-2 my-2 mt-4 mx-1">
 				<div class="col-12 col-md-2 align-self-center justify-content-center text-center">
 					<i class="fa fa-money dashboard-icon"></i>
 				</div>
@@ -24,7 +27,7 @@
 					<%= pedidosDesteMes %>
 				</div>
 			</div>
-			<div class="row dashboard-pedido p-2 my-3 mt-4 mx-1">
+			<div class="row dashboard-pedido p-2 my-2 mx-1">
 				<div class="col-12 col-md-2 align-self-center justify-content-center text-center">
 					<i class="fa fa-area-chart dashboard-icon"></i>
 				</div>
@@ -43,7 +46,7 @@
 					<%= 'R$ ' + totalVendaPedidos %>
 				</div>
 			</div>
-			<div class="row dashboard-pedido p-2 my-3 mt-4 mx-1">
+			<div class="row dashboard-pedido p-2 my-2 mx-1">
 				<div class="col-12 col-md-2 align-self-center justify-content-center text-center">
 					<i class="fa fa-archive dashboard-icon"></i>
 				</div>
@@ -62,7 +65,7 @@
 					<%= 'R$ ' + totalCustoPedidos %>
 				</div>
 			</div>
-			<div class="row dashboard-pedido p-2 my-3 mt-4 mx-1">
+			<div class="row dashboard-pedido p-2 my-2 mx-1">
 				<div class="col-12 col-md-2 align-self-center justify-content-center text-center">
 					<i class="fa fa-usd dashboard-icon"></i>
 				</div>
@@ -131,36 +134,42 @@
 			<h2 class="h1 text-center my-4">Clientes</h2>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-12 col-md-4">
-			Clientes cadastrados: <%= clientes.length %>
-		</div>
-		<div class="col-12 col-md-4">
-			Segmentos com mais clientes:
-			<% segmentos.slice(0,3).forEach((segmento,i) => { %>
-				<br /><%= i+1 + ' - ' %><%= segmento.nome + " | Qtde: " + segmento.clientesQtde %>
-			<% }) %>
-		</div>
-		<div class="col-12 col-md-4">
-			Clientes com pedidos parados:
-			<% var counter = 0; %>
-			<% clientes.forEach((cliente,i)=>{ %>
-				<% var enough = false; %>
-				<% cliente.pedidos.forEach(pedido => { %>
-					<% if ((pedido.status._id === "1" || pedido.status._id === "2") && !enough) { %>
-					<% counter = counter+1; %>
-					<div class="my-1 p-1" style="border: 1px solid gray;border-radius: 5px;">
-						<a href="/cliente/<%= cliente._id %>" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ver cliente"><i class="fa fa-eye mx-1"></i><i class="fa fa-user"></i> <%= cliente.nome + " " + cliente.sobrenome %></a>
-						<br /><a class="ml-3" href="/pedido/<%= pedido._id %>" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ver pedido"><i class="fa fa-eye mx-1"></i><i class="fa fa-folder-open-o"></i> <%= "Pedido " + pedido.pedidoId2 %></a>
-						<% enough = true; %>
-					</div>
-					<% }  %>
+	<div class="col-12">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-3 mx-2 dashboard-cliente my-1">
+				<p class="text-center m-2"><i class="fa fa-user dashboard-icon"></i></p>
+				<p class="text-center m-1">Clientes cadastrados</p>
+				<p class="text-center m-1"><%= clientes.length %></p>
+			</div>
+			<div class="col-12 col-md-3 mx-2 dashboard-cliente my-1">
+				<p class="text-center m-2"><i class="fa fa-users dashboard-icon"></i></p>
+				<p class="text-center m-1">Segmentos com mais clientes</p>
+				<% segmentos.slice(0,3).forEach((segmento,i) => { %>
+					<p class="text-left m-1"><%= i+1 + ' - ' %><%= segmento.nome %><span class="float-right"> Qtde: <%= segmento.clientesQtde %></span></p>
+				<% }) %>
+			</div>
+			<div class="col-12 col-md-3 mx-2 dashboard-cliente my-1">
+				<p class="text-center m-2"><i class="fa fa-user-times dashboard-icon"></i></p>
+				<p class="text-center m-1">Clientes com pedidos parados</p>
+				<% var counter = 0; %>
+				<% clientes.forEach((cliente,i)=>{ %>
+					<% var enough = false; %>
+					<% cliente.pedidos.forEach(pedido => { %>
+						<% if ((pedido.status._id === "1" || pedido.status._id === "2") && !enough) { %>
+						<% counter = counter+1; %>
+						<div class="my-1 p-1" style="border: 1px solid gray;border-radius: 5px;">
+							<a href="/cliente/<%= cliente._id %>" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ver cliente"><i class="fa fa-eye mx-1"></i><i class="fa fa-user"></i> <%= cliente.nome + " " + cliente.sobrenome %></a>
+							<br /><a class="ml-3" href="/pedido/<%= pedido._id %>" data-toggle="tooltip" data-placement="left" title="" data-original-title="Ver pedido"><i class="fa fa-eye mx-1"></i><i class="fa fa-folder-open-o"></i> <%= "Pedido " + pedido.pedidoId2 %></a>
+							<% enough = true; %>
+						</div>
+						<% }  %>
+					<% }); %>
+					
 				<% }); %>
-				
-			<% }); %>
-			<% if (counter === 0){ %>
-				Nenhum pedido parado
-			<% } %>
+				<% if (counter === 0){ %>
+					Nenhum pedido parado
+				<% } %>
+			</div>
 		</div>
 	</div>
 </div>

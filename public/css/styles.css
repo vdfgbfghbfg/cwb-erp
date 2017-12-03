@@ -150,7 +150,7 @@ input.form-control, .input-group .form-control:hover {
     width: 20px;
     height: 20px;
 }
-.dashboard-pedido {
+.dashboard-pedido, .dashboard-cliente {
     border: 5px solid #3a53c5;
     border-radius: 5px;
     background-color: #3a86c529;
