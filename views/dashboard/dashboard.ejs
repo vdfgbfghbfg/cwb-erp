@@ -5,28 +5,86 @@
 		<div class="col-12">
 			<h2 class="h1 text-center my-4 mt-5 mt-sm-3">Pedidos</h2>
 		</div>
-		<div class="col-12 col-md-3">
-			Pedidos neste mês: 
-			<% let pedidosDesteMes = 0; %>
-			<% pedidos.forEach(pedido=>{ %>
-				<% if (pedido.data.mes.nome === monthName){ %>
-					<% pedidosDesteMes = pedidosDesteMes+1; %>
-				<% } %>
-			<% }); %>
-			<%= pedidosDesteMes %>
+		<div class="col-12 col-lg-6 mt-2 mt-md-4">
+			<h3 class="display-3 text-center" style="font-size: 1.8em !important">Informações importantes</h3>
+			<div class="row dashboard-pedido p-2 my-3 mt-4 mx-1">
+				<div class="col-12 col-md-2 align-self-center justify-content-center text-center">
+					<i class="fa fa-money dashboard-icon"></i>
+				</div>
+				<div class="col-12 col-md-6 align-self-center justify-content-center text-center">
+					Pedidos neste mês: 
+				</div>
+				<div class="col-12 col-md-4 align-self-center justify-content-center text-center">
+					<% let pedidosDesteMes = 0; %>
+					<% pedidos.forEach(pedido=>{ %>
+						<% if (pedido.data.mes.nome === monthName){ %>
+							<% pedidosDesteMes = pedidosDesteMes+1; %>
+						<% } %>
+					<% }); %>
+					<%= pedidosDesteMes %>
+				</div>
+			</div>
+			<div class="row dashboard-pedido p-2 my-3 mt-4 mx-1">
+				<div class="col-12 col-md-2 align-self-center justify-content-center text-center">
+					<i class="fa fa-area-chart dashboard-icon"></i>
+				</div>
+				<div class="col-12 col-md-6 align-self-center justify-content-center text-center">
+					Faturamento dos pedidos: 
+				</div>
+				<div class="col-12 col-md-4 align-self-center justify-content-center text-center">
+					<% var totalVendaPedidos = 0; %>
+					<% pedidos.forEach(pedido=>{ %>
+						<% if (Number(pedido.status._id) > 2) { %>
+							<% if (pedido.data.mes.nome === monthName){ %>
+								<% totalVendaPedidos += pedido.totalVenda; %>
+							<% } %>
+						<% } %>
+					<% }); %>
+					<%= 'R$ ' + totalVendaPedidos %>
+				</div>
+			</div>
+			<div class="row dashboard-pedido p-2 my-3 mt-4 mx-1">
+				<div class="col-12 col-md-2 align-self-center justify-content-center text-center">
+					<i class="fa fa-archive dashboard-icon"></i>
+				</div>
+				<div class="col-12 col-md-6 align-self-center justify-content-center text-center">
+					Investido em produtos:
+				 </div>
+				<div class="col-12 col-md-4 align-self-center justify-content-center text-center">
+					<% var totalCustoPedidos = 0; %>
+					<% pedidos.forEach(pedido=>{ %>
+						<% if (Number(pedido.status._id) > 2) { %>
+							<% if (pedido.data.mes.nome === monthName){ %>
+								<% totalCustoPedidos += pedido.totalCusto; %>
+							<% } %>
+						<% } %>
+					<% }); %>
+					<%= 'R$ ' + totalCustoPedidos %>
+				</div>
+			</div>
+			<div class="row dashboard-pedido p-2 my-3 mt-4 mx-1">
+				<div class="col-12 col-md-2 align-self-center justify-content-center text-center">
+					<i class="fa fa-usd dashboard-icon"></i>
+				</div>
+				<div class="col-12 col-md-6 align-self-center justify-content-center text-center">
+					Lucro básico:
+				 </div>
+				<div class="col-12 col-md-4 align-self-center justify-content-center text-center">
+					<% var totalCustoPedidos2 = 0; %>
+					<% pedidos.forEach(pedido=>{ %>
+						<% if (Number(pedido.status._id) > 2) { %>
+							<% if (pedido.data.mes.nome === monthName){ %>
+								<% totalCustoPedidos2 += pedido.totalCusto; %>
+							<% } %>
+						<% } %>
+					<% }); %>
+					<%= 'R$ ' + (totalVendaPedidos - totalCustoPedidos2) %>
+				</div>
+			</div>
 		</div>
-		<div class="col-12 col-md-3">
-			Faturamento dos pedidos:
-			<% var totalVendaPedidos = 0; %>
-			<% pedidos.forEach(pedido=>{ %>
-				<% if (Number(pedido.status._id) > 2) { %>
-					<% if (pedido.data.mes.nome === monthName){ %>
-						<% totalVendaPedidos += pedido.totalVenda; %>
-					<% } %>
-				<% } %>
-			<% }); %>
-			<%= 'R$ ' + totalVendaPedidos %>
+		<div class="col-12 col-lg-6">
 			<div class="faturamentoxmes mt-4">
+				<h3 class="display-3 text-center" style="font-size: 1.8em !important">Faturamento deste e dos últimos 2 meses</h3>
 				<div id="arrayValores" class="d-none"><%= faturamento %></div>
 				<canvas id="faturadoxmesCanvas"></canvas>
 				<script type="text/javascript">
@@ -67,30 +125,6 @@
 				</script>
 			</div>
 		</div>
-		<div class="col-12 col-md-3">
-			Investido em produtos:
-			<% var totalCustoPedidos = 0; %>
-			<% pedidos.forEach(pedido=>{ %>
-				<% if (Number(pedido.status._id) > 2) { %>
-					<% if (pedido.data.mes.nome === monthName){ %>
-						<% totalCustoPedidos += pedido.totalCusto; %>
-					<% } %>
-				<% } %>
-			<% }); %>
-			<%= 'R$ ' + totalCustoPedidos %>
-		</div>
-		<div class="col-12 col-md-3">
-			Lucro básico:
-			<% var totalCustoPedidos2 = 0; %>
-			<% pedidos.forEach(pedido=>{ %>
-				<% if (Number(pedido.status._id) > 2) { %>
-					<% if (pedido.data.mes.nome === monthName){ %>
-						<% totalCustoPedidos2 += pedido.totalCusto; %>
-					<% } %>
-				<% } %>
-			<% }); %>
-			<%= 'R$ ' + (totalVendaPedidos - totalCustoPedidos2) %>
-		</div>
 	</div>
 	<div class="row">
 		<div class="col-12">
@@ -98,16 +132,16 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-3">
+		<div class="col-12 col-md-4">
 			Clientes cadastrados: <%= clientes.length %>
 		</div>
-		<div class="col-3">
+		<div class="col-12 col-md-4">
 			Segmentos com mais clientes:
 			<% segmentos.slice(0,3).forEach((segmento,i) => { %>
 				<br /><%= i+1 + ' - ' %><%= segmento.nome + " | Qtde: " + segmento.clientesQtde %>
 			<% }) %>
 		</div>
-		<div class="col-3">
+		<div class="col-12 col-md-4">
 			Clientes com pedidos parados:
 			<% var counter = 0; %>
 			<% clientes.forEach((cliente,i)=>{ %>
