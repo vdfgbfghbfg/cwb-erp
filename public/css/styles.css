@@ -150,10 +150,10 @@ input.form-control, .input-group .form-control:hover {
     width: 20px;
     height: 20px;
 }
-.dashboard-pedido, .dashboard-cliente {
+.dashboard-pedido, .dashboard-cliente,.dashboard-produto {
     border: 5px solid #3a53c5;
     border-radius: 5px;
-    background-color: #3a86c529;
+    background-color: rgba(58, 134, 197, 0.16);
 }
 .dashboard-icon {
     font-size: 2em !important;
@@ -163,4 +163,15 @@ input.form-control, .input-group .form-control:hover {
     position: relative;
     bottom: 5px;
     left: 5px;
+}
+.d-grid{
+    display: grid;
+}
+@media (min-width: 800px){
+    .h-48{
+        height: 48%;
+    }
+}
+.d-inline-table{
+    display: inline-table;
 }

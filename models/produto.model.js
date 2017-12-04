@@ -11,6 +11,7 @@ var produtoSchema = new mongoose.Schema({
 	sku: {type: String, unique: true},
 	peso: String,
 	quantidade: Number,
+	quantidadeVendida: Number,
 	precoVenda: String,
 	precoCusto: String,
 	img: Object,

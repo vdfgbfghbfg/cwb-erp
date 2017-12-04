@@ -7,6 +7,11 @@ var Pedido = require('./../models/pedido.model');
 var Cliente = require('./../models/cliente.model');
 var Produto = require('./../models/produto.model');
 
+var data = new Date;
+var esteMes = data.getMonth();
+var esteAno= data.getYear();
+var quantidadeDesteMes = "quantidadeVendida."+ esteMes + esteAno+ ".quantidade";
+
 router.use(bodyParser.urlencoded({extended: true}));
 router.use(bodyParser.json());
 router.use(expressSanitized());
@@ -104,7 +109,7 @@ router.post('/pedido/new', (req,res)=>{
 			});
 			req.body.produtos.forEach(produto => {
 				if(produto._id){
-					Produto.findByIdAndUpdate(produto.idOficial, {$inc:{quantidade: - produto.quantidade}},(error,produtoAtualizado)=>{
+					Produto.findByIdAndUpdate(produto.idOficial, {$inc:{quantidade: - produto.quantidade, quantidadeVendida: + produto.quantidade}},(error,produtoAtualizado)=>{
 						if(error){console.log(error)}
 					});
 					
